@@ -8,13 +8,13 @@ namespace Services
     public interface IAdvertisementService
     {
         [OperationContract]
-        Advertisement Create(Advertisement person);
+        Advertisement Create(Advertisement advertisement);
 
         [OperationContract]
-        Advertisement Read(int addId);
+        Advertisement Read(string addId);
 
         [OperationContract]
-        Advertisement Update(int addId, Advertisement person);
+        Advertisement Update(string addId, Advertisement advertisement);
 
         [OperationContract]
         void Delete(string id);
