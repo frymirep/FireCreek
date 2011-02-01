@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="TestGitHub">
+</Property><Property Name="Solution File" Value="C:\depot_root\FireCreek\TestGitHub\TestGitHub.sln">
+</Property><Property Name="Date" Value="Monday, January 31, 2011">
+</Property><Property Name="Time" Value="19:42 PM">
+</Property></Properties><Event ErrorLevel="0" Project="TestGitHub" Source="TestGitHub\TestGitHub.vcproj" Description="Converting project file 'C:\depot_root\FireCreek\TestGitHub\TestGitHub\TestGitHub.vcproj'.">
+</Event><Event ErrorLevel="1" Project="TestGitHub" Source="TestGitHub\TestGitHub.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="0" Project="TestGitHub" Source="TestGitHub\TestGitHub.vcproj" Description="Done converting to new project file 'C:\depot_root\FireCreek\TestGitHub\TestGitHub\TestGitHub.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="TestGitHub" Source="TestGitHub\TestGitHub.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="TestGitHub.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="TestGitHub.sln" Description="Converted">
+</Event></UpgradeLog>
