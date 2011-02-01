@@ -2,7 +2,7 @@
 
 using System.ServiceModel;
 
-namespace Services
+namespace Services.Advert
 {
     [ServiceContract]
     public interface IAdvertisementService

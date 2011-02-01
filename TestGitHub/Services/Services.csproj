@@ -50,13 +50,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdvertisementRepository.cs" />
-    <Compile Include="AdvertisementService.cs" />
+    <Compile Include="Advert\AdvertisementRepository.cs" />
+    <Compile Include="Advert\AdvertisementService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Advertisement.cs" />
-    <Compile Include="IAdvertisementService.cs" />
+    <Compile Include="Advert\Advertisement.cs" />
+    <Compile Include="Advert\IAdvertisementService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
