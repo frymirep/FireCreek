@@ -17,6 +17,6 @@ namespace Services
         Advertisement Update(string addId, Advertisement advertisement);
 
         [OperationContract]
-        void Delete(string id);
+        void Delete(string addId);
     }
 }
