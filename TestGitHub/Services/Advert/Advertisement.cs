@@ -1,14 +1,14 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Services
+namespace Services.Advert
 {
     [DataContract(Namespace = "")]
     public class Advertisement
     {
         [DataMember]
-        private int Identifier { get; set; }
+        public int Identifier { get; set; }
 
         [DataMember]
-        private byte[] AdvertContent { get; set; }
+        public byte[] AdvertContent { get; set; }
     }
 }

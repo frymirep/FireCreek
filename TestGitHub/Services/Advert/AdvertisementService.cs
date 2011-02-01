@@ -1,7 +1,7 @@
 ﻿using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 
-namespace Services
+namespace Services.Advert
 {
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class AdvertisementService : IAdvertisementService
@@ -21,8 +21,7 @@ namespace Services
             if (!int.TryParse(addId,out add)) return null;
             try
             {
-                var ad = AdvertisementRepository.GetAdvertById(addId);
-                return ad;
+                return AdvertisementRepository.GetAdvertById(add);
             }
             catch
             {
@@ -33,17 +32,17 @@ namespace Services
         [WebInvoke(UriTemplate = "{addId}", Method = "PUT")]
         public Advertisement Update(string addId, Advertisement advertisement)
         {
-            int add;
-            if (!int.TryParse(addId, out add)) return null;
-            AdvertisementRepository.Update(advertisement);
-            return new Advertisement();
+            return AdvertisementRepository.Update(advertisement);
         }
 
         [WebInvoke(UriTemplate = "{addId}", Method = "DELETE")]
         public void Delete(string addId)
         {
-        }
+            int add;
+            if (!int.TryParse(addId,out add)) return;
 
+            AdvertisementRepository.RemoveById(add);
+        }
         #endregion
     }
 }
