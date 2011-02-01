@@ -6,8 +6,9 @@ namespace Services
     public class Advertisement
     {
         [DataMember]
-        int Identifier { get; set; }
+        private int Identifier { get; set; }
+
         [DataMember]
-        byte[] AdvertContent { get; set; }
+        private byte[] AdvertContent { get; set; }
     }
 }

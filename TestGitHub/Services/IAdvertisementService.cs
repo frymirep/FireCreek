@@ -8,15 +8,15 @@ namespace Services
     public interface IAdvertisementService
     {
         [OperationContract]
-        Advertisement GetAdvert(int addId);
+        Advertisement Create(Advertisement person);
 
         [OperationContract]
-        Advertisement InsertPerson(Advertisement person);
+        Advertisement Read(int addId);
 
         [OperationContract]
-        Advertisement UpdatePerson(string id, Advertisement person);
+        Advertisement Update(int addId, Advertisement person);
 
         [OperationContract]
-        void DeletePerson(string id);
+        void Delete(string id);
     }
 }
