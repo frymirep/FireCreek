@@ -1,22 +1,23 @@
 ﻿// inspiration: http://geekswithblogs.net/michelotti/archive/2010/08/21/restful-wcf-services-with-no-svc-file-and-no-config.aspx
 
 using System.ServiceModel;
+using Services.Model;
 
-namespace Services.Advert
+namespace Services.Generic
 {
     [ServiceContract]
-    public interface IAdvertisementService
+    public interface IService<T> where T : IdentifiableEntity
     {
         [OperationContract]
-        Advertisement Create(Advertisement advertisement);
+        T Create(string id, T payload);
 
         [OperationContract]
-        Advertisement Read(string addId);
+        T Read(string id);
 
         [OperationContract]
-        Advertisement Update(string addId, Advertisement advertisement);
+        T Update(string id, T payload);
 
         [OperationContract]
-        void Delete(string addId);
+        void Delete(string id);
     }
 }

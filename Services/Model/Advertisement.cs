@@ -1,13 +1,10 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Services.Advert
+namespace Services.Model
 {
     [DataContract(Namespace = "")]
-    public class Advertisement
+    public class Advertisement : IdentifiableEntity
     {
-        [DataMember]
-        public int Identifier { get; set; }
-
         [DataMember]
         public byte[] AdvertContent { get; set; }
     }

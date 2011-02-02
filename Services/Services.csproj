@@ -50,14 +50,17 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Advert\AdvertisementRepository.cs" />
-    <Compile Include="Advert\AdvertisementService.cs" />
+    <Compile Include="Model\GeoLocation.cs" />
+    <Compile Include="Repository\AdvertisementRepository.cs" />
+    <Compile Include="Model\IdentifiableEntity.cs" />
+    <Compile Include="Generic\Service.cs" />
+    <Compile Include="Generic\IService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Advert\Advertisement.cs" />
-    <Compile Include="Advert\IAdvertisementService.cs" />
+    <Compile Include="Model\Advertisement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Repository.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
