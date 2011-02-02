@@ -7,11 +7,10 @@ namespace Services.Repository
     {
         // refactor to seperate FuncMaps class?
         private static readonly EntityToEntityFuncMap CreateTypeMap = new EntityToEntityFuncMap
-                              {
-                                  {
-                                      typeof(Advertisement), p => { return AdvertisementRepository.Create(p as Advertisement); }
-                                  },
-                              };
+        {
+            { typeof(Advertisement), p => { return AdvertisementRepository.Create(p as Advertisement); }},
+            { typeof(GeoLocation),   p => { return GeolocationRepository.Create(p as GeoLocation); }},
+        };
 
         private static readonly EntityToEntityFuncMap UpdateTypeMap = new EntityToEntityFuncMap
                               {
@@ -22,16 +21,10 @@ namespace Services.Repository
         
 
         private static readonly StringToEntityFuncMap RetrieveTypeMap = new StringToEntityFuncMap
-                              {
-                                  {
-                                      typeof(Advertisement), id =>
-                                                                 {
-                                                                     int identifier;
-                                                                     return !int.TryParse(id, out identifier) 
-                                                                         ? null : AdvertisementRepository.GetAdvertById(identifier);
-                                                                 }
-                                  }
-                              };
+        {
+            { typeof(Advertisement), id => { return AdvertisementRepository.GetAdvertById(BoxIdAsInt(id)); }},
+            { typeof(GeoLocation),   id => { return GeolocationRepository.GetLocationById(BoxIdAsInt(id)); }}
+        };
 
         private static readonly StringToEntityFuncMap DeleteTypeMap = new StringToEntityFuncMap
                               {
@@ -45,6 +38,19 @@ namespace Services.Repository
                                                                  }
                                   }
                               };
+
+        // this needs a better name very badly
+        private static int BoxIdAsInt(string id)
+        {
+            int identifier;
+            return !int.TryParse(id, out identifier) ? int.MinValue : identifier;
+        }
+        // this needs a better name very badly
+        private static long BoxIdAsLong(string id)
+        {
+            long identifier;
+            return !long.TryParse(id, out identifier) ? long.MinValue : identifier;
+        }
 
         // TODO:  These static methods are so similar... some way to refactor to common code even though type maps are different types?
         public static T Create(T payload) 

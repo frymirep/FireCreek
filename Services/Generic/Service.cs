@@ -23,7 +23,6 @@ namespace Services.Generic
         public T Read(string id)
         {
             Func<T> action = () => Repository<T>.GetById(id);
-
             var result = PerformAction(action);
             return result;
         }
