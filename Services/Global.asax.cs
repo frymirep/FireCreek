@@ -2,7 +2,9 @@
 using System.ServiceModel.Activation;
 using System.Web;
 using System.Web.Routing;
-using Services.Advert;
+using Services.Generic;
+using Services.Model;
+using Services.Repository;
 
 namespace Services
 {
@@ -15,7 +17,8 @@ namespace Services
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            RouteTable.Routes.Add(new ServiceRoute("Advert", new WebServiceHostFactory(), typeof(AdvertisementService)));
+            RouteTable.Routes.Add(new ServiceRoute("Advert",   new WebServiceHostFactory(), typeof(Service<Advertisement>)));
+            RouteTable.Routes.Add(new ServiceRoute("Location", new WebServiceHostFactory(), typeof(Service<GeoLocation>)));
         }
     }
 }
