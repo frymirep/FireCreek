@@ -60,6 +60,7 @@
     </Compile>
     <Compile Include="Model\Advertisement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\GeolocationRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
   </ItemGroup>
   <ItemGroup />
