@@ -13,6 +13,14 @@ namespace Services.Repository
                                   },
                               };
 
+        private static readonly EntityToEntityFuncMap UpdateTypeMap = new EntityToEntityFuncMap
+                              {
+                                  {
+                                      typeof(Advertisement), p => { return AdvertisementRepository.Update(p as Advertisement); }
+                                  }
+                              };
+        
+
         private static readonly StringToEntityFuncMap RetrieveTypeMap = new StringToEntityFuncMap
                               {
                                   {
@@ -25,12 +33,6 @@ namespace Services.Repository
                                   }
                               };
 
-        private static readonly EntityToEntityFuncMap UpdateTypeMap = new EntityToEntityFuncMap
-                              {
-                                  {
-                                      typeof(Advertisement), p => { return AdvertisementRepository.Update(p as Advertisement); }
-                                  }
-                              };
         private static readonly StringToEntityFuncMap DeleteTypeMap = new StringToEntityFuncMap
                               {
                                   {

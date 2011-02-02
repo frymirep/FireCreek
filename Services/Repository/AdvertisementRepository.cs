@@ -14,35 +14,16 @@ namespace Services.Repository
             return advertisement;
         }
 
-        public static IdentifiableEntity GetAdvertById(int add)
+        public static IdentifiableEntity GetAdvertById(int identifier)
         {
-            return new Advertisement { Identifier = add, AdvertContent = new byte[] { 23, 46, 67, 45, 23, 56, 87, 56, 99, 167 } };
+            return new Advertisement
+                       {
+                           Identifier = identifier, 
+                           AdvertContent = new byte[] { 23, 46, 67, 45, 23, 56, 87, 56, 99, 167 }
+                       };
         }
 
-        public static void RemoveById(int add)
-        {
-
-        }
-    }
-
-    public class GeolocationRepository
-    {
-        public static IdentifiableEntity Create(GeoLocation advertisement)
-        {
-            return advertisement;
-        }
-
-        public static IdentifiableEntity Update(GeoLocation advertisement)
-        {
-            return advertisement;
-        }
-
-        public static IdentifiableEntity GetLocationById(int identifier)
-        {
-            return new Advertisement { Identifier = identifier, AdvertContent = new byte[] { 23, 46, 67, 45, 23, 56, 87, 56, 99, 167 } };
-        }
-
-        public static void RemoveById(int add)
+        public static void RemoveById(int identifier)
         {
 
         }
