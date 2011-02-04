@@ -147,5 +147,8 @@
     <Build Include="Schema Objects\Views\DotNetConvertibleLocation.view.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Schema Objects\Programmability\Stored Procedures\InsertLocation.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>

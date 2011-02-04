@@ -7,6 +7,7 @@
     <Schema Namespace="Persistence.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="PersistenceStoreContainer">
           <EntitySet Name="Advertisement" EntityType="Persistence.Store.Advertisement" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Location" EntityType="Persistence.Store.Location" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DotNetConvertibleLocation" EntityType="Persistence.Store.DotNetConvertibleLocation" store:Type="Views" store:Schema="dbo" store:Name="DotNetConvertibleLocation">
             <DefiningQuery>SELECT 
       [DotNetConvertibleLocation].[Identifier] AS [Identifier], 
@@ -25,6 +26,14 @@
         <!--Errors Found During Generation:
       warning 6005: The data type 'geography' is not supported; the column 'Location' in table 'Database.dbo.Location' was excluded.
       -->
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Identifier" />
+          </Key>
+          <Property Name="Identifier" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PhoneId" Type="nvarchar" MaxLength="20" />
+          <Property Name="LocationText" Type="nvarchar(max)" StoreGeneratedPattern="Computed" />
+        </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'Database.dbo.DotNetConvertibleLocation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
@@ -36,6 +45,11 @@
           <Property Name="PhoneId" Type="nvarchar" MaxLength="20" />
           <Property Name="Location" Type="varbinary(max)" />
         </EntityType>
+        <Function Name="InsertLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phoneId" Type="nvarchar" Mode="In" />
+          <Parameter Name="longitude" Type="float" Mode="In" />
+          <Parameter Name="latitude" Type="float" Mode="In" />
+        </Function>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -43,6 +57,7 @@
         <EntityContainer Name="PersistenceEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Advertisements" EntityType="Persistence.Advertisement" />
           <EntitySet Name="DotNetConvertibleLocations" EntityType="Persistence.DotNetConvertibleLocation" />
+          <EntitySet Name="Locations" EntityType="Persistence.Location" />
         </EntityContainer>
         <EntityType Name="Advertisement">
           <Key>
@@ -59,6 +74,14 @@
           <Property Name="PhoneId" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="Location" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Identifier" />
+          </Key>
+          <Property Type="Int64" Name="Identifier" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="PhoneId" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LocationText" MaxLength="Max" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -74,6 +97,15 @@
             <ScalarProperty Name="PhoneId" ColumnName="PhoneId" />
             <ScalarProperty Name="Location" ColumnName="Location" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="Persistence.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="LocationText" ColumnName="LocationText" />
+                <ScalarProperty Name="PhoneId" ColumnName="PhoneId" />
+                <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -96,7 +128,8 @@
     <Diagrams>
       <Diagram Name="PersistenceModel">
         <EntityTypeShape EntityType="Persistence.Advertisement" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583331" IsExpanded="true" />
-        <EntityTypeShape EntityType="Persistence.DotNetConvertibleLocation" Width="2.25" PointX="3.375" PointY="0.625" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Persistence.DotNetConvertibleLocation" Width="2.25" PointX="0.75" PointY="2.875" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Persistence.Location" Width="1.5" PointX="4.375" PointY="0.75" Height="1.4033821614583335" />
       </Diagram>
     </Diagrams>
   </Designer>
