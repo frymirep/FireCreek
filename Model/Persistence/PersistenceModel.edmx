@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Persistence.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="PersistenceStoreContainer">
+          <EntitySet Name="Advertisement" EntityType="Persistence.Store.Advertisement" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DotNetConvertibleLocation" EntityType="Persistence.Store.DotNetConvertibleLocation" store:Type="Views" store:Schema="dbo" store:Name="DotNetConvertibleLocation">
+            <DefiningQuery>SELECT 
+      [DotNetConvertibleLocation].[Identifier] AS [Identifier], 
+      [DotNetConvertibleLocation].[PhoneId] AS [PhoneId], 
+      [DotNetConvertibleLocation].[Location] AS [Location]
+      FROM [dbo].[DotNetConvertibleLocation] AS [DotNetConvertibleLocation]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <EntityType Name="Advertisement">
+          <Key>
+            <PropertyRef Name="Identifier" />
+          </Key>
+          <Property Name="Identifier" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="varbinary" MaxLength="1" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6005: The data type 'geography' is not supported; the column 'Location' in table 'Database.dbo.Location' was excluded.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Database.dbo.DotNetConvertibleLocation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="DotNetConvertibleLocation">
+          <Key>
+            <PropertyRef Name="Identifier" />
+          </Key>
+          <Property Name="Identifier" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PhoneId" Type="nvarchar" MaxLength="20" />
+          <Property Name="Location" Type="varbinary(max)" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Persistence" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="PersistenceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Advertisements" EntityType="Persistence.Advertisement" />
+          <EntitySet Name="DotNetConvertibleLocations" EntityType="Persistence.DotNetConvertibleLocation" />
+        </EntityContainer>
+        <EntityType Name="Advertisement">
+          <Key>
+            <PropertyRef Name="Identifier" />
+          </Key>
+          <Property Name="Identifier" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="Binary" MaxLength="1" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="DotNetConvertibleLocation">
+          <Key>
+            <PropertyRef Name="Identifier" />
+          </Key>
+          <Property Name="Identifier" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PhoneId" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Location" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PersistenceStoreContainer" CdmEntityContainer="PersistenceEntities">
+          <EntitySetMapping Name="Advertisements"><EntityTypeMapping TypeName="Persistence.Advertisement"><MappingFragment StoreEntitySet="Advertisement">
+            <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+            <ScalarProperty Name="Content" ColumnName="Content" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="DotNetConvertibleLocations"><EntityTypeMapping TypeName="Persistence.DotNetConvertibleLocation"><MappingFragment StoreEntitySet="DotNetConvertibleLocation">
+            <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+            <ScalarProperty Name="PhoneId" ColumnName="PhoneId" />
+            <ScalarProperty Name="Location" ColumnName="Location" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="PersistenceModel">
+        <EntityTypeShape EntityType="Persistence.Advertisement" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583331" IsExpanded="true" />
+        <EntityTypeShape EntityType="Persistence.DotNetConvertibleLocation" Width="2.25" PointX="3.375" PointY="0.625" Height="1.5956835937499996" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

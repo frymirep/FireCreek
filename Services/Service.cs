@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
-using Services.Model;
+using Model.Domain;
 using Services.Repository;
 
 namespace Services.Generic

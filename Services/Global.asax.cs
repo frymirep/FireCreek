@@ -3,8 +3,8 @@ using System.ServiceModel.Activation;
 using System.Web;
 using System.Web.Routing;
 using Services.Generic;
-using Services.Model;
-using Services.Repository;
+using Model.Domain;
+
 
 namespace Services
 {

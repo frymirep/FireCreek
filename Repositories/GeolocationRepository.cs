@@ -1,6 +1,6 @@
-﻿using Services.Model;
+﻿using Model.Domain;
 
-namespace Services.Repository
+namespace Repository
 {
     public class GeolocationRepository
     {
@@ -14,7 +14,7 @@ namespace Services.Repository
             return geoLocation;
         }
 
-        public static IdentifiableEntity GetLocationById(int identifier)
+        public static IdentifiableEntity GetLocationById(long identifier)
         {
             return new GeoLocation
                        {

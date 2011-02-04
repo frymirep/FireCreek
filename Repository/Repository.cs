@@ -1,4 +1,5 @@
-﻿using Services.Model;
+﻿using Repository;
+using Services.Model;
 using EntityToEntityFuncMap = System.Collections.Generic.Dictionary<System.Type, System.Func<Services.Model.IdentifiableEntity, Services.Model.IdentifiableEntity>>;
 using StringToEntityFuncMap = System.Collections.Generic.Dictionary<System.Type, System.Func<System.String, Services.Model.IdentifiableEntity>>;
 namespace Services.Repository

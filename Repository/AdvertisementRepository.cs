@@ -1,6 +1,6 @@
 ﻿using Services.Model;
 
-namespace Services.Repository
+namespace Repository
 {
     public class AdvertisementRepository
     {

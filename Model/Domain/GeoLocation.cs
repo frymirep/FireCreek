@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Services.Model
+namespace Model.Domain
 {
     [DataContract(Namespace = "")]
     public class GeoLocation : IdentifiableEntity
