@@ -96,6 +96,22 @@ namespace Model.Persistence
     		}
     	}
     	private ObjectSet<DotNetConvertibleLocation> _DotNetConvertibleLocations;
+    
+    	/// <summary>
+    	/// No Metadata Documentation available.
+    	/// </summary>
+    	public ObjectSet<Location> Locations
+    	{
+    		get
+    		{
+    			if ((_Locations == null))
+    			{
+    				_Locations = base.CreateObjectSet<Location>("Locations");
+    			}
+    			return _Locations;
+    		}
+    	}
+    	private ObjectSet<Location> _Locations;
 
         #endregion
         #region AddTo Methods
@@ -114,6 +130,14 @@ namespace Model.Persistence
     	public void AddToDotNetConvertibleLocations(DotNetConvertibleLocation dotNetConvertibleLocation)
     	{
     		base.AddObject("DotNetConvertibleLocations", dotNetConvertibleLocation);
+    	}
+    
+    	/// <summary>
+    	/// Deprecated Method for adding a new object to the Locations EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+    	/// </summary>
+    	public void AddToLocations(Location location)
+    	{
+    		base.AddObject("Locations", location);
     	}
 
         #endregion
@@ -301,6 +325,109 @@ namespace Model.Persistence
     	private global::System.Byte[] _Location;
     	partial void OnLocationChanging(global::System.Byte[] value);
     	partial void OnLocationChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Persistence", Name="Location")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Location : EntityObject
+    {
+        #region Factory Method
+    
+    	/// <summary>
+    	/// Create a new Location object.
+    	/// </summary>
+        /// <param name="identifier">Initial value of the Identifier property.</param>
+    	public static Location CreateLocation(global::System.Int64 identifier)
+    	{
+    		Location location = new Location();
+    		location.Identifier = identifier;
+    		return location;
+    	}
+
+        #endregion
+        #region Primitive Properties
+    
+    	/// <summary>
+    	/// No Metadata Documentation available.
+    	/// </summary>
+    	[EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+    	[DataMemberAttribute()]
+    	public global::System.Int64 Identifier
+    	{
+    		get
+    		{
+    			return _Identifier;
+    		}
+    		set
+    		{
+    			if (_Identifier != value)
+    			{
+        			OnIdentifierChanging(value);
+        			ReportPropertyChanging("Identifier");
+        			_Identifier = StructuralObject.SetValidValue(value);
+        			ReportPropertyChanged("Identifier");
+        			OnIdentifierChanged();
+    			}
+    		}
+    	}
+    	private global::System.Int64 _Identifier;
+    	partial void OnIdentifierChanging(global::System.Int64 value);
+    	partial void OnIdentifierChanged();
+    
+    	/// <summary>
+    	/// No Metadata Documentation available.
+    	/// </summary>
+    	[EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+    	[DataMemberAttribute()]
+    	public global::System.String PhoneId
+    	{
+    		get
+    		{
+    			return _PhoneId;
+    		}
+    		set
+    		{
+    			OnPhoneIdChanging(value);
+    			ReportPropertyChanging("PhoneId");
+    			_PhoneId = StructuralObject.SetValidValue(value, true);
+    			ReportPropertyChanged("PhoneId");
+    			OnPhoneIdChanged();
+    		}
+    	}
+    	private global::System.String _PhoneId;
+    	partial void OnPhoneIdChanging(global::System.String value);
+    	partial void OnPhoneIdChanged();
+    
+    	/// <summary>
+    	/// No Metadata Documentation available.
+    	/// </summary>
+    	[EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+    	[DataMemberAttribute()]
+    	public global::System.String LocationText
+    	{
+    		get
+    		{
+    			return _LocationText;
+    		}
+    		set
+    		{
+    			OnLocationTextChanging(value);
+    			ReportPropertyChanging("LocationText");
+    			_LocationText = StructuralObject.SetValidValue(value, true);
+    			ReportPropertyChanged("LocationText");
+    			OnLocationTextChanged();
+    		}
+    	}
+    	private global::System.String _LocationText;
+    	partial void OnLocationTextChanging(global::System.String value);
+    	partial void OnLocationTextChanged();
 
         #endregion
     
