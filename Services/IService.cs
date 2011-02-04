@@ -1,7 +1,7 @@
 ﻿// inspiration: http://geekswithblogs.net/michelotti/archive/2010/08/21/restful-wcf-services-with-no-svc-file-and-no-config.aspx
 
 using System.ServiceModel;
-using Services.Model;
+using Model.Domain;
 
 namespace Services.Generic
 {

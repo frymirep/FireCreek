@@ -1,6 +1,8 @@
-﻿using Services.Model;
-using EntityToEntityFuncMap = System.Collections.Generic.Dictionary<System.Type, System.Func<Services.Model.IdentifiableEntity, Services.Model.IdentifiableEntity>>;
-using StringToEntityFuncMap = System.Collections.Generic.Dictionary<System.Type, System.Func<System.String, Services.Model.IdentifiableEntity>>;
+﻿using Model.Domain;
+using Repositories;
+using Repository;
+using EntityToEntityFuncMap = System.Collections.Generic.Dictionary<System.Type, System.Func<Model.Domain.IdentifiableEntity, Model.Domain.IdentifiableEntity>>;
+using StringToEntityFuncMap = System.Collections.Generic.Dictionary<System.Type, System.Func<System.String, Model.Domain.IdentifiableEntity>>;
 namespace Services.Repository
 {
     public class Repository<T> where T : IdentifiableEntity
@@ -23,7 +25,7 @@ namespace Services.Repository
         private static readonly StringToEntityFuncMap RetrieveTypeMap = new StringToEntityFuncMap
         {
             { typeof(Advertisement), id => { return AdvertisementRepository.GetAdvertById(BoxIdAsInt(id)); }},
-            { typeof(GeoLocation),   id => { return GeolocationRepository.GetLocationById(BoxIdAsInt(id)); }}
+            { typeof(GeoLocation),   id => { return GeolocationRepository.GetLocationById(BoxIdAsLong(id)); }}
         };
 
         private static readonly StringToEntityFuncMap DeleteTypeMap = new StringToEntityFuncMap
