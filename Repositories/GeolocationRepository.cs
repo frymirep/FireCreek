@@ -1,11 +1,17 @@
 ﻿using Model.Domain;
+using Model.Persistence;
 
-namespace Repository
+namespace Repositories
 {
     public class GeolocationRepository
     {
         public static IdentifiableEntity Create(GeoLocation geoLocation)
         {
+            using (var repo = new PersistenceEntities())
+            {
+                geoLocation.Identifier = repo.InsertLocation(string.Empty, geoLocation.Longitude, geoLocation.Latitude);
+                repo.SaveChanges();
+            }
             return geoLocation;
         }
 
