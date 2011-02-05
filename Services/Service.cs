@@ -11,10 +11,11 @@ namespace Services
     {
         #region IAdvertisementService Members
 
-        [WebInvoke(UriTemplate = "{id}", Method = "POST")]
-        public T Create(string id, T payload)
+        [WebInvoke(Method = "POST")]
+        public T Create(T payload)
         {
-            Func<T> action = () => Repository<T>.Create(payload);
+            var id = "test string"; // cant seem to get two parameter post working eventhough message body style is wrapped
+            Func<T> action = () => Repository<T>.Create(id, payload);
             var result = PerformAction(action);
             return result;
         }
