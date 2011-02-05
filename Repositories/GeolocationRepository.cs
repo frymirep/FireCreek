@@ -5,11 +5,11 @@ namespace Repositories
 {
     public class GeolocationRepository
     {
-        public static IdentifiableEntity Create(GeoLocation geoLocation)
+        public static IdentifiableEntity Create(string phoneIdentifier, GeoLocation geoLocation)
         {
             using (var repo = new PersistenceEntities())
             {
-                geoLocation.Identifier = repo.InsertLocation(string.Empty, geoLocation.Longitude, geoLocation.Latitude);
+                geoLocation.Identifier = repo.InsertLocation(phoneIdentifier, geoLocation.Longitude, geoLocation.Latitude);
                 repo.SaveChanges();
             }
             return geoLocation;

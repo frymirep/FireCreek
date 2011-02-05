@@ -1,4 +1,6 @@
 ﻿using Model.Domain;
+using System.Collections.Generic;
+using System;
 using EntityToEntityFuncMap = System.Collections.Generic.Dictionary<System.Type, System.Func<Model.Domain.IdentifiableEntity, Model.Domain.IdentifiableEntity>>;
 using StringToEntityFuncMap = System.Collections.Generic.Dictionary<System.Type, System.Func<System.String, Model.Domain.IdentifiableEntity>>;
 
@@ -7,10 +9,11 @@ namespace Repositories
     public class Repository<T> where T : IdentifiableEntity
     {
         // refactor to seperate FuncMaps class?
-        private static readonly EntityToEntityFuncMap CreateTypeMap = new EntityToEntityFuncMap
+        private static readonly Dictionary<Type, Func<string, IdentifiableEntity, IdentifiableEntity>> CreateTypeMap = 
+            new Dictionary<Type, Func<string, IdentifiableEntity, IdentifiableEntity>>
         {
-            { typeof(Advertisement), p => { return AdvertisementRepository.Create(p as Advertisement); }},
-            { typeof(GeoLocation),   p => { return GeolocationRepository.Create(p as GeoLocation); }},
+            { typeof(Advertisement), (id, p) => { return AdvertisementRepository.Create(p as Advertisement); }},
+            { typeof(GeoLocation),   (id, p) => { return GeolocationRepository.Create(id,p as GeoLocation); }},
         };
 
         private static readonly EntityToEntityFuncMap UpdateTypeMap = new EntityToEntityFuncMap
@@ -54,12 +57,12 @@ namespace Repositories
         }
 
         // TODO:  These static methods are so similar... some way to refactor to common code even though type maps are different types?
-        public static T Create(T payload) 
+        public static T Create(string id, T payload) 
         {
             var typeMap = CreateTypeMap;
             var type =  typeof(T);
             if (!typeMap.ContainsKey(type)) return null;
-            var result = typeMap[type](payload);
+            var result = typeMap[type](id, payload);
             return result as T;
         }
 

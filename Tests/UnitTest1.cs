@@ -10,7 +10,7 @@ namespace Tests
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void POSTTest()
         {
             var input = new GeoLocation
                                {
@@ -28,8 +28,28 @@ namespace Tests
             if (factory.State != CommunicationState.Faulted)
             {
                 var proxy = factory.CreateChannel();
-                output = proxy.Create(input.Identifier.ToString(), input);
+                //output = proxy.Create(input.Identifier.ToString(), input);
                 //Console.WriteLine(output.Identifier);
+                //if (factory.State == CommunicationState.Faulted)
+                //{
+                //    factory.Abort();
+                //}
+                //((IDisposable)proxy).Dispose();
+
+            }
+
+            Assert.IsNotNull(output);
+        }
+        [TestMethod]
+        public void GETTest()
+        {
+            GeoLocation output = null;
+            var factory = new ChannelFactory<IService<GeoLocation>>("GeoLocationService");
+            if (factory.State != CommunicationState.Faulted)
+            {
+                var proxy = factory.CreateChannel();
+                output = proxy.Read("werwtw4hej3u");
+                Console.WriteLine(output.Identifier);
                 //if (factory.State == CommunicationState.Faulted)
                 //{
                 //    factory.Abort();
