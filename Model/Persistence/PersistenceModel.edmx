@@ -4,16 +4,18 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Persistence.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+      <Schema Namespace="Persistence.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="PersistenceStoreContainer">
           <EntitySet Name="Advertisement" EntityType="Persistence.Store.Advertisement" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Location" EntityType="Persistence.Store.Location" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DotNetConvertibleLocation" EntityType="Persistence.Store.DotNetConvertibleLocation" store:Type="Views" store:Schema="dbo" store:Name="DotNetConvertibleLocation">
-            <DefiningQuery>SELECT 
-      [DotNetConvertibleLocation].[Identifier] AS [Identifier], 
-      [DotNetConvertibleLocation].[PhoneId] AS [PhoneId], 
-      [DotNetConvertibleLocation].[Location] AS [Location]
-      FROM [dbo].[DotNetConvertibleLocation] AS [DotNetConvertibleLocation]</DefiningQuery>
+            <DefiningQuery>
+              SELECT
+              [DotNetConvertibleLocation].[Identifier] AS [Identifier],
+              [DotNetConvertibleLocation].[PhoneId] AS [PhoneId],
+              [DotNetConvertibleLocation].[Location] AS [Location]
+              FROM [dbo].[DotNetConvertibleLocation] AS [DotNetConvertibleLocation]
+            </DefiningQuery>
           </EntitySet>
         </EntityContainer>
         <EntityType Name="Advertisement">
@@ -50,7 +52,8 @@
           <Parameter Name="longitude" Type="float" Mode="In" />
           <Parameter Name="latitude" Type="float" Mode="In" />
         </Function>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Persistence" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -58,6 +61,11 @@
           <EntitySet Name="Advertisements" EntityType="Persistence.Advertisement" />
           <EntitySet Name="DotNetConvertibleLocations" EntityType="Persistence.DotNetConvertibleLocation" />
           <EntitySet Name="Locations" EntityType="Persistence.Location" />
+          <FunctionImport Name="InsertLocation">
+            <Parameter Name="phoneId" Mode="In" Type="String" />
+            <Parameter Name="longitude" Mode="In" Type="Double" />
+            <Parameter Name="latitude" Mode="In" Type="Double" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Advertisement">
           <Key>
@@ -88,15 +96,23 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="PersistenceStoreContainer" CdmEntityContainer="PersistenceEntities">
-          <EntitySetMapping Name="Advertisements"><EntityTypeMapping TypeName="Persistence.Advertisement"><MappingFragment StoreEntitySet="Advertisement">
-            <ScalarProperty Name="Identifier" ColumnName="Identifier" />
-            <ScalarProperty Name="Content" ColumnName="Content" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="DotNetConvertibleLocations"><EntityTypeMapping TypeName="Persistence.DotNetConvertibleLocation"><MappingFragment StoreEntitySet="DotNetConvertibleLocation">
-            <ScalarProperty Name="Identifier" ColumnName="Identifier" />
-            <ScalarProperty Name="PhoneId" ColumnName="PhoneId" />
-            <ScalarProperty Name="Location" ColumnName="Location" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Advertisements">
+            <EntityTypeMapping TypeName="Persistence.Advertisement">
+              <MappingFragment StoreEntitySet="Advertisement">
+                <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DotNetConvertibleLocations">
+            <EntityTypeMapping TypeName="Persistence.DotNetConvertibleLocation">
+              <MappingFragment StoreEntitySet="DotNetConvertibleLocation">
+                <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+                <ScalarProperty Name="PhoneId" ColumnName="PhoneId" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Locations">
             <EntityTypeMapping TypeName="Persistence.Location">
               <MappingFragment StoreEntitySet="Location">
@@ -106,6 +122,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="InsertLocation" FunctionName="Persistence.Store.InsertLocation" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -122,14 +139,15 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="PersistenceModel">
+      <Diagram Name="PersistenceModel" DisplayType="true">
         <EntityTypeShape EntityType="Persistence.Advertisement" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583331" IsExpanded="true" />
-        <EntityTypeShape EntityType="Persistence.DotNetConvertibleLocation" Width="2.25" PointX="0.75" PointY="2.875" Height="1.5956835937499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="Persistence.Location" Width="1.5" PointX="4.375" PointY="0.75" Height="1.4033821614583335" />
+        <EntityTypeShape EntityType="Persistence.DotNetConvertibleLocation" Width="2.125" PointX="0.75" PointY="2.875" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Persistence.Location" Width="1.875" PointX="4.75" PointY="1" Height="1.59568359375" />
       </Diagram>
     </Diagrams>
   </Designer>

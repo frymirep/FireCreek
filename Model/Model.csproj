@@ -46,19 +46,19 @@
     <Compile Include="Domain\Advertisement.cs" />
     <Compile Include="Domain\GeoLocation.cs" />
     <Compile Include="Domain\IdentifiableEntity.cs" />
-    <Compile Include="Persistence\PersistenceModel.cs">
+    <Compile Include="Persistence\Persistence.Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PersistenceModel.tt</DependentUpon>
+      <DependentUpon>Persistence.Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Persistence\PersistenceModel.edmx" />
     <None Include="App.Config" />
-    <None Include="Persistence\PersistenceModel.tt">
+    <None Include="Persistence\Persistence.Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PersistenceModel.cs</LastGenOutput>
+      <LastGenOutput>Persistence.Model.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

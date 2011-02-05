@@ -2,9 +2,9 @@
 using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using Model.Domain;
-using Services.Repository;
+using Repositories;
 
-namespace Services.Generic
+namespace Services
 {
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class Service<T> : IService<T> where T : IdentifiableEntity

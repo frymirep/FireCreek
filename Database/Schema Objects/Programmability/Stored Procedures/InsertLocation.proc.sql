@@ -7,4 +7,17 @@ AS
 declare @point geography 
 set @point = geography::STPointFromText('POINT(' + CAST(@longitude AS VARCHAR(20)) + ' ' + CAST(@latitude AS VARCHAR(20)) + ')', 4326)
 
-insert into	Location values(@phoneId, @point)
+declare @temp table(identifier bigint)
+
+insert into	
+	Location 
+output 
+	inserted.identifier 
+into 
+	@temp
+values(@phoneId, @point)
+
+select 
+	identifier
+from
+	@temp

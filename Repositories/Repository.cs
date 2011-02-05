@@ -1,9 +1,8 @@
 ﻿using Model.Domain;
-using Repositories;
-using Repository;
 using EntityToEntityFuncMap = System.Collections.Generic.Dictionary<System.Type, System.Func<Model.Domain.IdentifiableEntity, Model.Domain.IdentifiableEntity>>;
 using StringToEntityFuncMap = System.Collections.Generic.Dictionary<System.Type, System.Func<System.String, Model.Domain.IdentifiableEntity>>;
-namespace Services.Repository
+
+namespace Repositories
 {
     public class Repository<T> where T : IdentifiableEntity
     {

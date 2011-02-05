@@ -3,7 +3,7 @@
 using System.ServiceModel;
 using Model.Domain;
 
-namespace Services.Generic
+namespace Services
 {
     [ServiceContract]
     public interface IService<T> where T : IdentifiableEntity
