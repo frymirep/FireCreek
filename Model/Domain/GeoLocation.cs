@@ -6,21 +6,21 @@ namespace Model.Domain
     [DataContract(Namespace = "")]
     public class GeoLocation : IdentifiableEntity
     {
-        [DataMember]
+        [DataMember(IsRequired=false)]
         public double Accuracy { get; set; }
-        [DataMember]
+        [DataMember(IsRequired = false)]
         public double? Altitude { get; set; }
-        [DataMember]
+        [DataMember(IsRequired = false)]
         public double? AltitudeAccuracy { get; set; }
-        [DataMember]
+        [DataMember(IsRequired = false)]
         public double? Heading { get; set; }
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public double Latitude { get; set; }
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public double Longitude { get; set; }
-        [DataMember]
+        [DataMember(IsRequired = false)]
         public double? Speed { get; set; }
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public DateTime Timestamp { get; set; }
     }
 }

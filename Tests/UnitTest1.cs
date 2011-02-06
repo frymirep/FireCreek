@@ -29,7 +29,15 @@ namespace Tests
             if (factory.State != CommunicationState.Faulted)
             {
                 var proxy = factory.CreateChannel();
-                output = proxy.Create(input);
+                try
+                {                    
+                    output = proxy.Create(input);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Console.WriteLine(e.InnerException.StackTrace);
+                }
                 Console.WriteLine(output.Identifier);
                 if (factory.State == CommunicationState.Faulted)
                 {
