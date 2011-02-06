@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
+using System.ServiceModel.Channels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Model.Domain;
 using Services;
@@ -28,14 +29,13 @@ namespace Tests
             if (factory.State != CommunicationState.Faulted)
             {
                 var proxy = factory.CreateChannel();
-                //output = proxy.Create(input.Identifier.ToString(), input);
-                //Console.WriteLine(output.Identifier);
-                //if (factory.State == CommunicationState.Faulted)
-                //{
-                //    factory.Abort();
-                //}
-                //((IDisposable)proxy).Dispose();
-
+                output = proxy.Create(input);
+                Console.WriteLine(output.Identifier);
+                if (factory.State == CommunicationState.Faulted)
+                {
+                    factory.Abort();
+                }
+                ((IDisposable)proxy).Dispose();
             }
 
             Assert.IsNotNull(output);
@@ -50,12 +50,11 @@ namespace Tests
                 var proxy = factory.CreateChannel();
                 output = proxy.Read("werwtw4hej3u");
                 Console.WriteLine(output.Identifier);
-                //if (factory.State == CommunicationState.Faulted)
-                //{
-                //    factory.Abort();
-                //}
-                //((IDisposable)proxy).Dispose();
-
+                if (factory.State == CommunicationState.Faulted)
+               {
+                    factory.Abort();
+                }
+                ((IDisposable)proxy).Dispose();
             }
 
             Assert.IsNotNull(output);

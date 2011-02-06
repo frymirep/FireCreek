@@ -28,8 +28,8 @@ namespace Services
             return result;
         }
 
-        [WebInvoke(UriTemplate = "{id}", Method = "PUT")]
-        public T Update(string id, T payload)
+        [WebInvoke(Method = "PUT")]
+        public T Update(T payload)
         {
             Func<T> action = () => Repository<T>.Update(payload);
             var result = PerformAction(action);

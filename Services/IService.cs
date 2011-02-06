@@ -16,7 +16,7 @@ namespace Services
         T Read(string id);
 
         [OperationContract]
-        T Update(string id, T payload);
+        T Update(T payload);
 
         [OperationContract]
         void Delete(string id);
