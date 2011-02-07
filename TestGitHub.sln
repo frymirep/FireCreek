@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientPrototype", "ClientPrototype\ClientPrototype.csproj", "{3436F861-1793-4BA0-8CF7-1E205839486E}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = TestGitHub.vsmdi
@@ -85,6 +87,16 @@ Global
 		{0CE9AB89-8299-49F7-8DDC-928F7ADC1E8C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{0CE9AB89-8299-49F7-8DDC-928F7ADC1E8C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{0CE9AB89-8299-49F7-8DDC-928F7ADC1E8C}.Release|Win32.ActiveCfg = Release|Any CPU
+		{3436F861-1793-4BA0-8CF7-1E205839486E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3436F861-1793-4BA0-8CF7-1E205839486E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3436F861-1793-4BA0-8CF7-1E205839486E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3436F861-1793-4BA0-8CF7-1E205839486E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3436F861-1793-4BA0-8CF7-1E205839486E}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{3436F861-1793-4BA0-8CF7-1E205839486E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3436F861-1793-4BA0-8CF7-1E205839486E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3436F861-1793-4BA0-8CF7-1E205839486E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3436F861-1793-4BA0-8CF7-1E205839486E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3436F861-1793-4BA0-8CF7-1E205839486E}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -55,7 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Persistence\PersistenceModel.edmx" />
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Persistence\Persistence.Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Persistence.Model.cs</LastGenOutput>
