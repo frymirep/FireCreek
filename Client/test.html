@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Geo Test</title>
+    <link rel="stylesheet" href="resources/css/geocongress.css" type="text/css">
+    <script type="text/javascript" src="src/sencha-touch.js"></script>
+</head>
+<body>
+   
+</body>
+</html>
+<script type="text/javascript">
+    Ext.setup({
+        onReady: function () {
+            
+            function onGeoUpdate(coords) {
+                alert(coords.latitude);
+                alert(coords.longitude);
+            }
+            this.geo = new Ext.util.GeoLocation({
+                autoUpdate: false
+            });
+            this.geo.on('locationupdate', onGeoUpdate, this);
+            this.geo.updateLocation();
+        }
+    });
+</script>

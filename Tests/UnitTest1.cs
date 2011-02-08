@@ -38,7 +38,10 @@ namespace Tests
                     Console.WriteLine(e.Message);
                     Console.WriteLine(e.InnerException.StackTrace);
                 }
-                Console.WriteLine(output.Identifier);
+                if (output != null)
+                {
+                    Console.WriteLine(output.Identifier);
+                }
                 if (factory.State == CommunicationState.Faulted)
                 {
                     factory.Abort();
