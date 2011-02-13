@@ -15,6 +15,7 @@ namespace Services
         public T Create(T payload)
         {
             var id = "test string"; // cant seem to get two parameter post working eventhough message body style is wrapped
+            if (payload == null) return null;
             Func<T> action = () => Repository<T>.Create(id, payload);
             var result = PerformAction(action);
             return result;
@@ -23,6 +24,7 @@ namespace Services
         [WebGet(UriTemplate = "{id}")]
         public T Read(string id)
         {
+            if (string.IsNullOrEmpty(id)) return null;
             Func<T> action = () => Repository<T>.GetById(id);
             var result = PerformAction(action);
             return result;
@@ -31,6 +33,7 @@ namespace Services
         [WebInvoke(Method = "PUT")]
         public T Update(T payload)
         {
+            if (payload == null) return null;
             Func<T> action = () => Repository<T>.Update(payload);
             var result = PerformAction(action);
             return result;
@@ -39,6 +42,7 @@ namespace Services
         [WebInvoke(UriTemplate = "{id}", Method = "DELETE")]
         public void Delete(string id)
         {
+            if (string.IsNullOrEmpty(id)) return;
             Func<T> action = () =>
             {
                 Repository<T>.RemoveById(id);

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace ClientPrototype.Controllers
 {
-    public class Default1Controller : Controller
+    public class DefaultController : Controller
     {
         //
         // GET: /Default1/
@@ -40,8 +40,6 @@ namespace ClientPrototype.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-
                 return RedirectToAction("Index");
             }
             catch

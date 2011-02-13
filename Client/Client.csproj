@@ -50,29 +50,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="index.html" />
     <Content Include="resources\css\geocongress.css" />
     <Content Include="resources\img\bg.png" />
     <Content Include="resources\img\icon.png" />
     <Content Include="resources\img\startup.png" />
-    <Content Include="src\classes\CongressService.js" />
-    <Content Include="src\classes\Util.js" />
-    <Content Include="src\classes\YQL.js" />
-    <Content Include="src\data\Bills.js" />
-    <Content Include="src\data\Cache.js" />
-    <Content Include="src\data\Committees.js" />
-    <Content Include="src\data\Legislators.js" />
-    <Content Include="src\data\States.js" />
-    <Content Include="src\data\Votes.js" />
-    <Content Include="src\index.js" />
     <Content Include="src\sencha-touch.js" />
-    <Content Include="src\views\App.js" />
-    <Content Include="src\views\BillSummary.js" />
-    <Content Include="src\views\DistrictInfo.js" />
-    <Content Include="src\views\LegislatorBio.js" />
-    <Content Include="src\views\LegislatorDetails.js" />
-    <Content Include="src\views\LegislatorList.js" />
-    <Content Include="src\views\StartScreen.js" />
     <Content Include="test.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -81,17 +63,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="yql-tables\allForLegislator.xml" />
-    <Content Include="yql-tables\billsearch.xml" />
-    <Content Include="yql-tables\billsummary.xml" />
-    <Content Include="yql-tables\votessearch.xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="resources\sass\config.rb" />
-    <None Include="resources\sass\geocongress.scss" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
