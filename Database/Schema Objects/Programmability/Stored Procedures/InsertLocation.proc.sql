@@ -1,7 +1,8 @@
 ﻿CREATE PROCEDURE [dbo].[InsertLocation]
 	@phoneId   nvarchar(20), 
 	@longitude float,
-	@latitude  float
+	@latitude  float,
+	@timestamp datetime
 AS
 
 declare @point geography 
@@ -15,7 +16,7 @@ output
 	inserted.identifier 
 into 
 	@temp
-values(@phoneId, @point)
+values(@phoneId, @point, @timestamp)
 
 select 
 	identifier

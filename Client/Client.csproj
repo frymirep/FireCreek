@@ -54,8 +54,9 @@
     <Content Include="resources\img\bg.png" />
     <Content Include="resources\img\icon.png" />
     <Content Include="resources\img\startup.png" />
+    <Content Include="src\index.js" />
     <Content Include="src\sencha-touch.js" />
-    <Content Include="test.html" />
+    <Content Include="index.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

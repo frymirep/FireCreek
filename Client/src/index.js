@@ -37,7 +37,8 @@ Application.AsWCFDate = function (datetime) {
     return datetime.format("M$").replace("\\","").replace("\\",""); // TODO: find better way
     }
     Application.onGeoUpdate = function (coords) {
-        // was getting circular ref trying to turn coords into json, so harvest what we want out of coords, jsonify that        
+        // was getting circular ref trying to turn coords into json, so harvest what we want out of coords, jsonify that 
+        // we need to find a better way to do this       
         var nonCircularCoord = { Accuracy: coords.accuracy, Altititude: coords.altitude, AltitudeAccuracy: coords.altitudeaccuracy,
             Heading: coords.heading, Latitude: coords.latitude, Longitude: coords.longitude, Speed: coords.speed,
             Timestamp: Application.AsWCFDate(coords.timestamp)
@@ -55,8 +56,8 @@ Application.AsWCFDate = function (datetime) {
     };
     Ext.setup({
         onReady: function () {
-            geo = new Ext.util.GeoLocation({
-                autoUpdate: true,
+            Application.GeoLocator = new Ext.util.GeoLocation({
+                autoUpdate: false,
                 listeners: {
                     locationupdate: Application.onGeoUpdate
                 },
@@ -64,5 +65,7 @@ Application.AsWCFDate = function (datetime) {
                 maximumAge: 20000,
                 enableHighAccuracy: true
             });
+            Application.GeoLocator.updateLocation();
+            //setInterval(Application.GeoLocator.updateLocation(), 1000 * 10);
         }
     });
