@@ -9,7 +9,7 @@ Application.NowAsMMDDYYYY = function () {
 }
 
 
-Application.SuccessUpdate = function (geo) {    
+Application.SuccessUpdate = function (geo) {
     Application.UpdateLocationText("Last Updated At " + Application.NowAsMMDDYYYY() + " Latitude: " + geo.latitude + " Longitude: " + geo.longitude);
 };
 
@@ -33,39 +33,37 @@ Application.FailureUpdate = function (geo,
 };
 
 
-Application.AsWCFDate = function (datetime) { 
-    return datetime.format("M$").replace("\\","").replace("\\",""); // TODO: find better way
-    }
-    Application.onGeoUpdate = function (coords) {
-        // was getting circular ref trying to turn coords into json, so harvest what we want out of coords, jsonify that 
-        // we need to find a better way to do this       
-        var nonCircularCoord = { Accuracy: coords.accuracy, Altititude: coords.altitude, AltitudeAccuracy: coords.altitudeaccuracy,
-            Heading: coords.heading, Latitude: coords.latitude, Longitude: coords.longitude, Speed: coords.speed,
-            Timestamp: Application.AsWCFDate(coords.timestamp)
-        };
-
-        var jsonCoords = Ext.encode(nonCircularCoord);
-        Ext.Ajax.request({
-            url: Application.ServerUrl,
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json; charset=utf-8' },
-            params: jsonCoords,
-            success: Application.SuccessUpdate(geo),
-            failure: Application.FailureUpdate(geo,bTimeout,bPermissionDenied,bLocationUnavailable,message)
-        });
+Application.AsWCFDate = function (datetime) {
+    return datetime.format("M$").replace("\\", "").replace("\\", ""); // TODO: find better way
+};
+Application.onGeoUpdate = function (coords) {
+    // was getting circular ref trying to turn coords into json, so harvest what we want out of coords, jsonify that        
+    var nonCircularCoord = { Accuracy: coords.accuracy, Altititude: coords.altitude, AltitudeAccuracy: coords.altitudeaccuracy,
+        Heading: coords.heading, Latitude: coords.latitude, Longitude: coords.longitude, Speed: coords.speed,
+        Timestamp: Application.AsWCFDate(coords.timestamp)
     };
-    Ext.setup({
-        onReady: function () {
-            Application.GeoLocator = new Ext.util.GeoLocation({
-                autoUpdate: false,
-                listeners: {
-                    locationupdate: Application.onGeoUpdate
-                },
-                timeout: 1000 * 10,
-                maximumAge: 20000,
-                enableHighAccuracy: true
-            });
-            Application.GeoLocator.updateLocation();
-            //setInterval(Application.GeoLocator.updateLocation(), 1000 * 10);
-        }
+
+    var jsonCoords = Ext.encode(nonCircularCoord);
+    Ext.Ajax.request({
+        url: Application.ServerUrl,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json; charset=utf-8' },
+        params: jsonCoords,
+        success: Application.SuccessUpdate(geo),
+        failure: Application.FailureUpdate(geo, bTimeout, bPermissionDenied, bLocationUnavailable, message)
     });
+};
+Ext.setup({
+    onReady: function () {
+        geo = new Ext.util.GeoLocation({
+            autoUpdate: true,
+            listeners: {
+                locationupdate: Application.onGeoUpdate
+            },
+            timeout: 1000 * 10,
+            timeout: 10000,
+            maximumAge: 20000,
+            enableHighAccuracy: true
+        });
+    }
+});
