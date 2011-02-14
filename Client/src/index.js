@@ -12,23 +12,8 @@ Application.SuccessUpdate = function (geo) {
     Application.UpdateLocationText("Last Updated At " + Application.NowAsMMDDYYYY() + " Latitude: " + geo.latitude + " Longitude: " + geo.longitude);
 };
 
-Application.FailureUpdate = function (geo,
-                                        bTimeout,
-                                        bPermissionDenied,
-                                        bLocationUnavailable,
-                                        message) {
-    var msg = message ? message : "default message";
-    if (bTimeout) {
-        msg = "timeout";
-    }
-    else if (bPermissionDenied) {
-        msg = "permission denied";
-    }
-    else if (bLocationUnavailable) {
-        msg = "location unavailable";
-    }
-
-    Application.UpdateLocationText("Failed To Update At " + Application.NowAsMMDDYYYY() + " due to: " + msg);
+Application.FailureUpdate = function (geo) {
+    Application.UpdateLocationText("Failed To Update At " + Application.NowAsMMDDYYYY() );
 };
 
 
@@ -50,7 +35,7 @@ Application.onGeoUpdate = function (coords) {
         headers: { 'Content-Type': 'application/json; charset=utf-8' },
         params: jsonCoords,
         success: Application.SuccessUpdate(geo),
-        failure: Application.FailureUpdate(geo, bTimeout, bPermissionDenied, bLocationUnavailable, message)
+        failure: Application.FailureUpdate(geo)
     });
 };
 Ext.setup({
@@ -60,7 +45,7 @@ Ext.setup({
             listeners: {
                 locationupdate: Application.onGeoUpdate
             },           
-            timeout: 10000,
+            timeout: 10000000,
             maximumAge: 20000,
             enableHighAccuracy: true
         });
