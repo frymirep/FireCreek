@@ -149,7 +149,8 @@ namespace Model.Persistence
         /// <param name="phoneId">No Metadata Documentation available.</param>
         /// <param name="longitude">No Metadata Documentation available.</param>
         /// <param name="latitude">No Metadata Documentation available.</param>
-        public int InsertLocation(global::System.String phoneId, Nullable<global::System.Double> longitude, Nullable<global::System.Double> latitude)
+        /// <param name="timestamp">No Metadata Documentation available.</param>
+        public int InsertLocation(global::System.String phoneId, Nullable<global::System.Double> longitude, Nullable<global::System.Double> latitude, Nullable<global::System.DateTime> timestamp)
         {
             ObjectParameter phoneIdParameter;
             if (phoneId != null)
@@ -181,7 +182,17 @@ namespace Model.Persistence
                 latitudeParameter = new ObjectParameter("latitude", typeof(global::System.Double));
             }
     
-            return base.ExecuteFunction("InsertLocation", phoneIdParameter, longitudeParameter, latitudeParameter);
+            ObjectParameter timestampParameter;
+            if (timestamp.HasValue)
+            {
+                timestampParameter = new ObjectParameter("timestamp", timestamp);
+            }
+            else
+            {
+                timestampParameter = new ObjectParameter("timestamp", typeof(global::System.DateTime));
+            }
+    
+            return base.ExecuteFunction("InsertLocation", phoneIdParameter, longitudeParameter, latitudeParameter, timestampParameter);
         }
 
         #endregion
@@ -472,9 +483,73 @@ namespace Model.Persistence
         private global::System.String _LocationText;
         partial void OnLocationTextChanging(global::System.String value);
         partial void OnLocationTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> Timestamp
+        {
+            get
+            {
+                return _Timestamp;
+            }
+            set
+            {
+                OnTimestampChanging(value);
+                ReportPropertyChanging("Timestamp");
+                _Timestamp = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Timestamp");
+                OnTimestampChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _Timestamp;
+        partial void OnTimestampChanging(Nullable<global::System.DateTime> value);
+        partial void OnTimestampChanged();
 
         #endregion
     
+    }
+
+    #endregion
+    #region ComplexTypes
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="Persistence", Name="AddLocation_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class AddLocation_Result : ComplexObject
+    {
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int64> identifier
+        {
+            get
+            {
+                return _identifier;
+            }
+            set
+            {
+                OnidentifierChanging(value);
+                ReportPropertyChanging("identifier");
+                _identifier = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("identifier");
+                OnidentifierChanged();
+            }
+        }
+        private Nullable<global::System.Int64> _identifier;
+        partial void OnidentifierChanging(Nullable<global::System.Int64> value);
+        partial void OnidentifierChanged();
+
+        #endregion
     }
 
     #endregion

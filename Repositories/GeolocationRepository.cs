@@ -9,7 +9,7 @@ namespace Repositories
         {
             using (var repo = new PersistenceEntities())
             {
-                geoLocation.Identifier = repo.InsertLocation(phoneIdentifier, geoLocation.Longitude, geoLocation.Latitude);
+                geoLocation.Identifier = repo.InsertLocation(phoneIdentifier, geoLocation.Longitude, geoLocation.Latitude, geoLocation.Timestamp);
                 repo.SaveChanges();
             }
             return geoLocation;

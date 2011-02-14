@@ -4,18 +4,16 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Persistence.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="Persistence.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="PersistenceStoreContainer">
           <EntitySet Name="Advertisement" EntityType="Persistence.Store.Advertisement" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Location" EntityType="Persistence.Store.Location" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DotNetConvertibleLocation" EntityType="Persistence.Store.DotNetConvertibleLocation" store:Type="Views" store:Schema="dbo" store:Name="DotNetConvertibleLocation">
-            <DefiningQuery>
-              SELECT
-              [DotNetConvertibleLocation].[Identifier] AS [Identifier],
-              [DotNetConvertibleLocation].[PhoneId] AS [PhoneId],
-              [DotNetConvertibleLocation].[Location] AS [Location]
-              FROM [dbo].[DotNetConvertibleLocation] AS [DotNetConvertibleLocation]
-            </DefiningQuery>
+            <DefiningQuery>SELECT 
+      [DotNetConvertibleLocation].[Identifier] AS [Identifier], 
+      [DotNetConvertibleLocation].[PhoneId] AS [PhoneId], 
+      [DotNetConvertibleLocation].[Location] AS [Location]
+      FROM [dbo].[DotNetConvertibleLocation] AS [DotNetConvertibleLocation]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
         <EntityType Name="Advertisement">
@@ -35,6 +33,7 @@
           <Property Name="Identifier" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="PhoneId" Type="nvarchar" MaxLength="20" />
           <Property Name="LocationText" Type="nvarchar(max)" StoreGeneratedPattern="Computed" />
+          <Property Name="Timestamp" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'Database.dbo.DotNetConvertibleLocation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -51,9 +50,9 @@
           <Parameter Name="phoneId" Type="nvarchar" Mode="In" />
           <Parameter Name="longitude" Type="float" Mode="In" />
           <Parameter Name="latitude" Type="float" Mode="In" />
+          <Parameter Name="timestamp" Type="datetime" Mode="In" />
         </Function>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Persistence" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -65,6 +64,7 @@
             <Parameter Name="phoneId" Mode="In" Type="String" />
             <Parameter Name="longitude" Mode="In" Type="Double" />
             <Parameter Name="latitude" Mode="In" Type="Double" />
+            <Parameter Name="timestamp" Mode="In" Type="DateTime" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="Advertisement">
@@ -89,7 +89,11 @@
           <Property Type="Int64" Name="Identifier" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="PhoneId" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="LocationText" MaxLength="Max" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="DateTime" Name="Timestamp" />
         </EntityType>
+        <ComplexType Name="AddLocation_Result">
+          <Property Type="Int64" Name="identifier" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -116,6 +120,7 @@
           <EntitySetMapping Name="Locations">
             <EntityTypeMapping TypeName="Persistence.Location">
               <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
                 <ScalarProperty Name="LocationText" ColumnName="LocationText" />
                 <ScalarProperty Name="PhoneId" ColumnName="PhoneId" />
                 <ScalarProperty Name="Identifier" ColumnName="Identifier" />

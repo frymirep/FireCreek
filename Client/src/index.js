@@ -8,7 +8,6 @@ Application.NowAsMMDDYYYY = function () {
     return new Date().dateFormat("m/d/Y H:i:s");
 }
 
-
 Application.SuccessUpdate = function (geo) {
     Application.UpdateLocationText("Last Updated At " + Application.NowAsMMDDYYYY() + " Latitude: " + geo.latitude + " Longitude: " + geo.longitude);
 };
@@ -44,6 +43,7 @@ Application.onGeoUpdate = function (coords) {
     };
 
     var jsonCoords = Ext.encode(nonCircularCoord);
+    debugger;
     Ext.Ajax.request({
         url: Application.ServerUrl,
         method: 'POST',
@@ -59,8 +59,7 @@ Ext.setup({
             autoUpdate: true,
             listeners: {
                 locationupdate: Application.onGeoUpdate
-            },
-            timeout: 1000 * 10,
+            },           
             timeout: 10000,
             maximumAge: 20000,
             enableHighAccuracy: true
