@@ -28,7 +28,6 @@ Application.onGeoUpdate = function (coords) {
     };
 
     var jsonCoords = Ext.encode(nonCircularCoord);
-    debugger;
     Ext.Ajax.request({
         url: Application.ServerUrl,
         method: 'POST',

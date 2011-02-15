@@ -22,5 +22,12 @@ namespace Model.Domain
         public double? Speed { get; set; }
         [DataMember(IsRequired = true)]
         public DateTime Timestamp { get; set; }
+        [DataMember(IsRequired = true)]
+        public string PhoneId { get; set; }
+
+        public static new GeoLocation Null
+        {
+            get { return IdentifiableEntity.Null as GeoLocation; }
+        }
     }
 }

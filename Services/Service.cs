@@ -14,9 +14,8 @@ namespace Services
         [WebInvoke(Method = "POST")]
         public T Create(T payload)
         {
-            var id = "test string"; // cant seem to get two parameter post working eventhough message body style is wrapped
             if (payload == null) return null;
-            Func<T> action = () => Repository<T>.Create(id, payload);
+            Func<T> action = () => Repository<T>.Create(payload.Identifier, payload);
             var result = PerformAction(action);
             return result;
         }

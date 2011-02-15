@@ -7,6 +7,9 @@ namespace Model.Domain
     {
         // in practice I expect this field will be the ESN if data is coming from the client, and some kind of object id if coming from the server
         [DataMember]
-        public long? Identifier { get; set; }
+        public string Identifier { get; set; }
+
+        public static IdentifiableEntity Null
+        { get { return new IdentifiableEntity(); } }
     }
 }

@@ -18,7 +18,7 @@ namespace Repositories
         {
             return new Advertisement
                        {
-                           Identifier = identifier, 
+                           Identifier = identifier.ToString(), 
                            AdvertContent = new byte[] { 23, 46, 67, 45, 23, 56, 87, 56, 99, 167 }
                        };
         }

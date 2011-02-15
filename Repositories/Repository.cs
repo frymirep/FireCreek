@@ -13,21 +13,19 @@ namespace Repositories
             new Dictionary<Type, Func<string, IdentifiableEntity, IdentifiableEntity>>
         {
             { typeof(Advertisement), (id, p) => { return AdvertisementRepository.Create(p as Advertisement); }},
-            { typeof(GeoLocation),   (id, p) => { return GeolocationRepository.Create(id,p as GeoLocation); }},
+            { typeof(GeoLocation),   (id, p) => { return GeolocationRepository.Create(p as GeoLocation); }},
         };
 
         private static readonly EntityToEntityFuncMap UpdateTypeMap = new EntityToEntityFuncMap
-                              {
-                                  {
-                                      typeof(Advertisement), p => { return AdvertisementRepository.Update(p as Advertisement); }
-                                  }
-                              };
+        {
+            { typeof(Advertisement), p => { return AdvertisementRepository.Update(p as Advertisement); } }
+        };
         
 
         private static readonly StringToEntityFuncMap RetrieveTypeMap = new StringToEntityFuncMap
         {
             { typeof(Advertisement), id => { return AdvertisementRepository.GetAdvertById(BoxIdAsInt(id)); }},
-            { typeof(GeoLocation),   id => { return GeolocationRepository.GetLocationById(BoxIdAsLong(id)); }}
+            { typeof(GeoLocation),   id => { return GeolocationRepository.GetGeoLocationById(BoxIdAsLong(id)); }}
         };
 
         private static readonly StringToEntityFuncMap DeleteTypeMap = new StringToEntityFuncMap

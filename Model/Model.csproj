@@ -46,6 +46,7 @@
     <Compile Include="Domain\Advertisement.cs" />
     <Compile Include="Domain\GeoLocation.cs" />
     <Compile Include="Domain\IdentifiableEntity.cs" />
+    <Compile Include="Domain\Phone.cs" />
     <Compile Include="Persistence\Persistence.Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
