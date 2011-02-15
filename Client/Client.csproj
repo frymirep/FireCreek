@@ -55,6 +55,7 @@
     <Content Include="resources\img\icon.png" />
     <Content Include="resources\img\startup.png" />
     <Content Include="src\index.js" />
+    <Content Include="src\sencha-touch-debug-w-comments.js" />
     <Content Include="src\sencha-touch.js" />
     <Content Include="index.html" />
     <Content Include="Web.config" />
