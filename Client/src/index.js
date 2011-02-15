@@ -1,8 +1,8 @@
 ﻿Ext.ns("Application");
 
 Application.UpdateLocationText = function (text) {
-    text = Application.GUID() + " is GUID <br />" + text;
-    Ext.fly("location").update(text, false);
+    var location = Ext.get("location");
+    location.update(text + "<br />" + location.dom.innerHTML);
 }
 
 Application.NowAsMMDDYYYY = function () {
@@ -28,7 +28,6 @@ Application.RandomGUID = function () {
 };
 
 Application.GUID = function () {
-    debugger;
     if (localStorage.getItem("-THRocks-AppGUID") === "undefined") {
         localStorage.setItem("-THRocks-AppGUID", Application.RandomGUID());
     };
@@ -57,13 +56,15 @@ Application.onGeoUpdate = function (coords) {
 };
 Ext.setup({
     onReady: function () {
+        Application.UpdateLocationText(Application.GUID() + " is GUID <br />");
         geo = new Ext.util.GeoLocation({
-            autoUpdate: false,
-            timeout: 10000000,
+            autoUpdate: true,
+            listeners: {
+                locationupdate: Application.onGeoUpdate
+            },
+            timeout: 100000,
             maximumAge: 20000,
             enableHighAccuracy: true
         });
-        geo.on('locationupdate', Application.onGeoUpdate, this);
-        geo.setAutoUpdate(true);
     }
 });

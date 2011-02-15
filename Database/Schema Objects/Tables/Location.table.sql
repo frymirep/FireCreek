@@ -4,5 +4,7 @@
 	PhoneId nvarchar(20),
 	Location geography,
 	LocationText as Location.STAsText(),
-	[Timestamp] datetime
+	[Timestamp] datetime,
+	Longitude float(53),
+	Latitude float(53)
 )
