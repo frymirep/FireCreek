@@ -55,12 +55,12 @@ namespace Repositories
         }
 
         // TODO:  These static methods are so similar... some way to refactor to common code even though type maps are different types?
-        public static T Create(string id, T payload) 
+        public static T Create(T payload) 
         {
             var typeMap = CreateTypeMap;
             var type =  typeof(T);
             if (!typeMap.ContainsKey(type)) return null;
-            var result = typeMap[type](id, payload);
+            var result = typeMap[type](payload.Identifier, payload);
             return result as T;
         }
 

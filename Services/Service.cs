@@ -15,7 +15,7 @@ namespace Services
         public T Create(T payload)
         {
             if (payload == null) return null;
-            Func<T> action = () => Repository<T>.Create(payload.Identifier, payload);
+            Func<T> action = () => Repository<T>.Create(payload);
             var result = PerformAction(action);
             return result;
         }
