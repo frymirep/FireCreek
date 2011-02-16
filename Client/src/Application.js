@@ -54,6 +54,5 @@ Application.onGeoUpdate = function (coords) {
         success: Application.SuccessUpdate(geo),
         failure: Application.FailureUpdate(geo),
         scope: Application
-
     });
 };

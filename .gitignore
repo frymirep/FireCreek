@@ -39,3 +39,4 @@ _ReSharper.*
 *.suo
 *.cache
 ~$*
+*phonegap*
