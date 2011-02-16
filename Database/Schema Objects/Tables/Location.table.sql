@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[Location]
 (
 	Identifier bigint primary key identity (1,1), 
-	PhoneId nvarchar(20),
+	PhoneId nvarchar(37),
 	Location geography,
 	LocationText as Location.STAsText(),
 	[Timestamp] datetime,

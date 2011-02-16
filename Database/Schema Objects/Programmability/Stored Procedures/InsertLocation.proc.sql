@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[InsertLocation]
-	@phoneId   nvarchar(20), 
+	@phoneId   nvarchar(37), 
 	@longitude float(53),
 	@latitude  float(53),
 	@timestamp datetime
