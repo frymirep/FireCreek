@@ -1,16 +1,17 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"> 
-    <title>Geo Test</title>    
+    <meta charset="utf-8">
+    <title>Geo Test</title>
 </head>
-<body>    
-    <div id="location"></div>
+<body>
+    <div id="location">
+    </div>
+    <script type="text/javascript">
+        Application.ServerUrl = "http://localhost/Services/Location/Create";
+    </script>
     <script type="text/javascript" src="src/sencha-touch-debug-w-comments.js"></script>
     <script type="text/javascript" src="src/Application.js"></script>
     <script type="text/javascript" src="src/index.js"></script>
 </body>
 </html>
-<script type="text/javascript">
-    Application.ServerUrl = "http://localhost/Services/Location/Create";
-</script>
