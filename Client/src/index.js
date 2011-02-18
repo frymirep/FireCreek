@@ -3,16 +3,20 @@
     phoneStartupScreen: 'phone_startup.png',
     icon: 'icon.png',
     glossOnIcon: false,
-    onReady: function () {        
+    onReady: function () {
         Application.UpdateLocationText(Application.GUID() + " is GUID <br />");
-        geo = new Ext.util.GeoLocation({
-            autoUpdate: true,
-            listeners: {
-                locationupdate: Application.onGeoUpdate
-            },
-            timeout: 1000000,
-            maximumAge: 200,
-            enableHighAccuracy: true
-        });
+        try {
+            geo = new Ext.util.GeoLocation({
+                autoUpdate: true,
+                listeners: {
+                    locationupdate: Application.onGeoUpdate
+                },
+                timeout: 1000000,
+                maximumAge: 200,
+                enableHighAccuracy: true
+            });
+        } catch (e) {
+        } finally {
+        }
     }
 });

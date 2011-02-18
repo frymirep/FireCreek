@@ -46,13 +46,19 @@ Application.onGeoUpdate = function (coords) {
     };
 
     var jsonCoords = Ext.encode(nonCircularCoord);
-    Ext.Ajax.request({
-        url: Application.ServerUrl,
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json; charset=utf-8' },
-        params: jsonCoords,
-        success: Application.SuccessUpdate(geo),
-        failure: Application.FailureUpdate(geo),
-        scope: Application
-    });
+    try {
+        Ext.Ajax.request({
+            url: Application.ServerUrl,
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json; charset=utf-8' },
+            params: jsonCoords,
+            success: Application.SuccessUpdate(geo),
+            failure: Application.FailureUpdate(geo),
+            scope: Application
+        });
+    } catch (e) {
+        alert(e);
+    } finally {
+    }
+
 };
