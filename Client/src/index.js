@@ -7,7 +7,7 @@
         Application.UpdateLocationText(Application.GUID() + " is GUID <br />");
         try {
             geo = new Ext.util.GeoLocation({
-                autoUpdate: true,
+                autoUpdate: false,
                 listeners: {
                     locationupdate: Application.onGeoUpdate
                 },
@@ -15,6 +15,10 @@
                 maximumAge: 200,
                 enableHighAccuracy: true
             });
+
+            while (true) { 
+                setInterval(geo.
+            }
         } catch (e) {
         } finally {
         }

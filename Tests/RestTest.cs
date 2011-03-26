@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ServiceModel;
-using System.ServiceModel.Channels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Model.Domain;
 using Services;
@@ -8,7 +7,7 @@ using Services;
 namespace Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class RestTest
     {
         [TestMethod]
         public void POSTTest()
@@ -70,5 +69,6 @@ namespace Tests
 
             Assert.IsNotNull(output);
         }
+
     }
 }

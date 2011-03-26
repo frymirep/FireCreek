@@ -4,6 +4,7 @@ using System.Runtime.Serialization;
 namespace Model.Domain
 {
     [DataContract(Namespace = "")]
+    [RouteName(Name = "Location")]
     public class GeoLocation : IdentifiableEntity
     {
         [DataMember(IsRequired=false)]

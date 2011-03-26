@@ -11,8 +11,6 @@ using System;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
 using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
 using System.Runtime.Serialization;
 
 [assembly: EdmSchemaAttribute()]
@@ -26,174 +24,174 @@ namespace Model.Persistence
     /// </summary>
     public partial class PersistenceEntities : ObjectContext
     {
-        #region Constructors
+    	#region Constructors
     
-        /// <summary>
-        /// Initializes a new PersistenceEntities object using the connection string found in the 'PersistenceEntities' section of the application configuration file.
-        /// </summary>
-        public PersistenceEntities() : base("name=PersistenceEntities", "PersistenceEntities")
-        {
-            this.ContextOptions.LazyLoadingEnabled = true;
-            OnContextCreated();
-        }
+    	/// <summary>
+    	/// Initializes a new PersistenceEntities object using the connection string found in the 'PersistenceEntities' section of the application configuration file.
+    	/// </summary>
+    	public PersistenceEntities() : base("name=PersistenceEntities", "PersistenceEntities")
+    	{
+    		this.ContextOptions.LazyLoadingEnabled = true;
+    		OnContextCreated();
+    	}
     
-        /// <summary>
-        /// Initialize a new PersistenceEntities object.
-        /// </summary>
-        public PersistenceEntities(string connectionString) : base(connectionString, "PersistenceEntities")
-        {
-            this.ContextOptions.LazyLoadingEnabled = true;
-            OnContextCreated();
-        }
+    	/// <summary>
+    	/// Initialize a new PersistenceEntities object.
+    	/// </summary>
+    	public PersistenceEntities(string connectionString) : base(connectionString, "PersistenceEntities")
+    	{
+    		this.ContextOptions.LazyLoadingEnabled = true;
+    		OnContextCreated();
+    	}
     
-        /// <summary>
-        /// Initialize a new PersistenceEntities object.
-        /// </summary>
-        public PersistenceEntities(EntityConnection connection) : base(connection, "PersistenceEntities")
-        {
-            this.ContextOptions.LazyLoadingEnabled = true;
-            OnContextCreated();
-        }
+    	/// <summary>
+    	/// Initialize a new PersistenceEntities object.
+    	/// </summary>
+    	public PersistenceEntities(EntityConnection connection) : base(connection, "PersistenceEntities")
+    	{
+    		this.ContextOptions.LazyLoadingEnabled = true;
+    		OnContextCreated();
+    	}
     
-        #endregion
+    	#endregion
     
-        #region Partial Methods
+    	#region Partial Methods
     
-        partial void OnContextCreated();
+    	partial void OnContextCreated();
     
-        #endregion
+    	#endregion
     
         #region ObjectSet Properties
     
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<Advertisement> Advertisements
-        {
-            get
-            {
-                if ((_Advertisements == null))
-                {
-                    _Advertisements = base.CreateObjectSet<Advertisement>("Advertisements");
-                }
-                return _Advertisements;
-            }
-        }
-        private ObjectSet<Advertisement> _Advertisements;
+    	/// <summary>
+    	/// No Metadata Documentation available.
+    	/// </summary>
+    	public ObjectSet<Advertisement> Advertisements
+    	{
+    		get
+    		{
+    			if ((_Advertisements == null))
+    			{
+    				_Advertisements = base.CreateObjectSet<Advertisement>("Advertisements");
+    			}
+    			return _Advertisements;
+    		}
+    	}
+    	private ObjectSet<Advertisement> _Advertisements;
     
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<DotNetConvertibleLocation> DotNetConvertibleLocations
-        {
-            get
-            {
-                if ((_DotNetConvertibleLocations == null))
-                {
-                    _DotNetConvertibleLocations = base.CreateObjectSet<DotNetConvertibleLocation>("DotNetConvertibleLocations");
-                }
-                return _DotNetConvertibleLocations;
-            }
-        }
-        private ObjectSet<DotNetConvertibleLocation> _DotNetConvertibleLocations;
+    	/// <summary>
+    	/// No Metadata Documentation available.
+    	/// </summary>
+    	public ObjectSet<DotNetConvertibleLocation> DotNetConvertibleLocations
+    	{
+    		get
+    		{
+    			if ((_DotNetConvertibleLocations == null))
+    			{
+    				_DotNetConvertibleLocations = base.CreateObjectSet<DotNetConvertibleLocation>("DotNetConvertibleLocations");
+    			}
+    			return _DotNetConvertibleLocations;
+    		}
+    	}
+    	private ObjectSet<DotNetConvertibleLocation> _DotNetConvertibleLocations;
     
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<Location> Locations
-        {
-            get
-            {
-                if ((_Locations == null))
-                {
-                    _Locations = base.CreateObjectSet<Location>("Locations");
-                }
-                return _Locations;
-            }
-        }
-        private ObjectSet<Location> _Locations;
+    	/// <summary>
+    	/// No Metadata Documentation available.
+    	/// </summary>
+    	public ObjectSet<Location> Locations
+    	{
+    		get
+    		{
+    			if ((_Locations == null))
+    			{
+    				_Locations = base.CreateObjectSet<Location>("Locations");
+    			}
+    			return _Locations;
+    		}
+    	}
+    	private ObjectSet<Location> _Locations;
 
         #endregion
         #region AddTo Methods
     
-        /// <summary>
-        /// Deprecated Method for adding a new object to the Advertisements EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToAdvertisements(Advertisement advertisement)
-        {
-            base.AddObject("Advertisements", advertisement);
-        }
+    	/// <summary>
+    	/// Deprecated Method for adding a new object to the Advertisements EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+    	/// </summary>
+    	public void AddToAdvertisements(Advertisement advertisement)
+    	{
+    		base.AddObject("Advertisements", advertisement);
+    	}
     
-        /// <summary>
-        /// Deprecated Method for adding a new object to the DotNetConvertibleLocations EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToDotNetConvertibleLocations(DotNetConvertibleLocation dotNetConvertibleLocation)
-        {
-            base.AddObject("DotNetConvertibleLocations", dotNetConvertibleLocation);
-        }
+    	/// <summary>
+    	/// Deprecated Method for adding a new object to the DotNetConvertibleLocations EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+    	/// </summary>
+    	public void AddToDotNetConvertibleLocations(DotNetConvertibleLocation dotNetConvertibleLocation)
+    	{
+    		base.AddObject("DotNetConvertibleLocations", dotNetConvertibleLocation);
+    	}
     
-        /// <summary>
-        /// Deprecated Method for adding a new object to the Locations EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToLocations(Location location)
-        {
-            base.AddObject("Locations", location);
-        }
+    	/// <summary>
+    	/// Deprecated Method for adding a new object to the Locations EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+    	/// </summary>
+    	public void AddToLocations(Location location)
+    	{
+    		base.AddObject("Locations", location);
+    	}
 
         #endregion
         #region Function Imports
     
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
+    	/// <summary>
+    	/// No Metadata Documentation available.
+    	/// </summary>
         /// <param name="phoneId">No Metadata Documentation available.</param>
         /// <param name="longitude">No Metadata Documentation available.</param>
         /// <param name="latitude">No Metadata Documentation available.</param>
         /// <param name="timestamp">No Metadata Documentation available.</param>
-        public int InsertLocation(global::System.String phoneId, Nullable<global::System.Double> longitude, Nullable<global::System.Double> latitude, Nullable<global::System.DateTime> timestamp)
-        {
-            ObjectParameter phoneIdParameter;
-            if (phoneId != null)
-            {
-                phoneIdParameter = new ObjectParameter("phoneId", phoneId);
-            }
-            else
-            {
-                phoneIdParameter = new ObjectParameter("phoneId", typeof(global::System.String));
-            }
+    	public int InsertLocation(global::System.String phoneId, Nullable<global::System.Double> longitude, Nullable<global::System.Double> latitude, Nullable<global::System.DateTime> timestamp)
+    	{
+    		ObjectParameter phoneIdParameter;
+    		if (phoneId != null)
+    		{
+    			phoneIdParameter = new ObjectParameter("phoneId", phoneId);
+    		}
+    		else
+    		{
+    			phoneIdParameter = new ObjectParameter("phoneId", typeof(global::System.String));
+    		}
     
-            ObjectParameter longitudeParameter;
-            if (longitude.HasValue)
-            {
-                longitudeParameter = new ObjectParameter("longitude", longitude);
-            }
-            else
-            {
-                longitudeParameter = new ObjectParameter("longitude", typeof(global::System.Double));
-            }
+    		ObjectParameter longitudeParameter;
+    		if (longitude.HasValue)
+    		{
+    			longitudeParameter = new ObjectParameter("longitude", longitude);
+    		}
+    		else
+    		{
+    			longitudeParameter = new ObjectParameter("longitude", typeof(global::System.Double));
+    		}
     
-            ObjectParameter latitudeParameter;
-            if (latitude.HasValue)
-            {
-                latitudeParameter = new ObjectParameter("latitude", latitude);
-            }
-            else
-            {
-                latitudeParameter = new ObjectParameter("latitude", typeof(global::System.Double));
-            }
+    		ObjectParameter latitudeParameter;
+    		if (latitude.HasValue)
+    		{
+    			latitudeParameter = new ObjectParameter("latitude", latitude);
+    		}
+    		else
+    		{
+    			latitudeParameter = new ObjectParameter("latitude", typeof(global::System.Double));
+    		}
     
-            ObjectParameter timestampParameter;
-            if (timestamp.HasValue)
-            {
-                timestampParameter = new ObjectParameter("timestamp", timestamp);
-            }
-            else
-            {
-                timestampParameter = new ObjectParameter("timestamp", typeof(global::System.DateTime));
-            }
+    		ObjectParameter timestampParameter;
+    		if (timestamp.HasValue)
+    		{
+    			timestampParameter = new ObjectParameter("timestamp", timestamp);
+    		}
+    		else
+    		{
+    			timestampParameter = new ObjectParameter("timestamp", typeof(global::System.DateTime));
+    		}
     
-            return base.ExecuteFunction("InsertLocation", phoneIdParameter, longitudeParameter, latitudeParameter, timestampParameter);
-        }
+    		return base.ExecuteFunction("InsertLocation", phoneIdParameter, longitudeParameter, latitudeParameter, timestampParameter);
+    	}
 
         #endregion
     }
@@ -213,70 +211,70 @@ namespace Model.Persistence
     {
         #region Factory Method
     
-        /// <summary>
-        /// Create a new Advertisement object.
-        /// </summary>
+    	/// <summary>
+    	/// Create a new Advertisement object.
+    	/// </summary>
         /// <param name="identifier">Initial value of the Identifier property.</param>
-        public static Advertisement CreateAdvertisement(global::System.Int32 identifier)
-        {
-            Advertisement advertisement = new Advertisement();
-            advertisement.Identifier = identifier;
-            return advertisement;
-        }
+    	public static Advertisement CreateAdvertisement(global::System.Int32 identifier)
+    	{
+    		Advertisement advertisement = new Advertisement();
+    		advertisement.Identifier = identifier;
+    		return advertisement;
+    	}
 
         #endregion
         #region Primitive Properties
     
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Identifier
-        {
-            get
-            {
-                return _Identifier;
-            }
-            set
-            {
-                if (_Identifier != value)
-                {
-                    OnIdentifierChanging(value);
-                    ReportPropertyChanging("Identifier");
-                    _Identifier = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("Identifier");
-                    OnIdentifierChanged();
-                }
-            }
-        }
-        private global::System.Int32 _Identifier;
-        partial void OnIdentifierChanging(global::System.Int32 value);
-        partial void OnIdentifierChanged();
+    	/// <summary>
+    	/// No Metadata Documentation available.
+    	/// </summary>
+    	[EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+    	[DataMemberAttribute()]
+    	public global::System.Int32 Identifier
+    	{
+    		get
+    		{
+    			return _Identifier;
+    		}
+    		set
+    		{
+    			if (_Identifier != value)
+    			{
+        			OnIdentifierChanging(value);
+        			ReportPropertyChanging("Identifier");
+        			_Identifier = StructuralObject.SetValidValue(value);
+        			ReportPropertyChanged("Identifier");
+        			OnIdentifierChanged();
+    			}
+    		}
+    	}
+    	private global::System.Int32 _Identifier;
+    	partial void OnIdentifierChanging(global::System.Int32 value);
+    	partial void OnIdentifierChanged();
     
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.Byte[] Content
-        {
-            get
-            {
-                return StructuralObject.GetValidValue(_Content);
-            }
-            set
-            {
-                OnContentChanging(value);
-                ReportPropertyChanging("Content");
-                _Content = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Content");
-                OnContentChanged();
-            }
-        }
-        private global::System.Byte[] _Content;
-        partial void OnContentChanging(global::System.Byte[] value);
-        partial void OnContentChanged();
+    	/// <summary>
+    	/// No Metadata Documentation available.
+    	/// </summary>
+    	[EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+    	[DataMemberAttribute()]
+    	public global::System.Byte[] Content
+    	{
+    		get
+    		{
+    			return StructuralObject.GetValidValue(_Content);
+    		}
+    		set
+    		{
+    			OnContentChanging(value);
+    			ReportPropertyChanging("Content");
+    			_Content = StructuralObject.SetValidValue(value, true);
+    			ReportPropertyChanged("Content");
+    			OnContentChanged();
+    		}
+    	}
+    	private global::System.Byte[] _Content;
+    	partial void OnContentChanging(global::System.Byte[] value);
+    	partial void OnContentChanged();
 
         #endregion
     
@@ -292,94 +290,94 @@ namespace Model.Persistence
     {
         #region Factory Method
     
-        /// <summary>
-        /// Create a new DotNetConvertibleLocation object.
-        /// </summary>
+    	/// <summary>
+    	/// Create a new DotNetConvertibleLocation object.
+    	/// </summary>
         /// <param name="identifier">Initial value of the Identifier property.</param>
-        public static DotNetConvertibleLocation CreateDotNetConvertibleLocation(global::System.Int32 identifier)
-        {
-            DotNetConvertibleLocation dotNetConvertibleLocation = new DotNetConvertibleLocation();
-            dotNetConvertibleLocation.Identifier = identifier;
-            return dotNetConvertibleLocation;
-        }
+    	public static DotNetConvertibleLocation CreateDotNetConvertibleLocation(global::System.Int32 identifier)
+    	{
+    		DotNetConvertibleLocation dotNetConvertibleLocation = new DotNetConvertibleLocation();
+    		dotNetConvertibleLocation.Identifier = identifier;
+    		return dotNetConvertibleLocation;
+    	}
 
         #endregion
         #region Primitive Properties
     
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Identifier
-        {
-            get
-            {
-                return _Identifier;
-            }
-            set
-            {
-                if (_Identifier != value)
-                {
-                    OnIdentifierChanging(value);
-                    ReportPropertyChanging("Identifier");
-                    _Identifier = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("Identifier");
-                    OnIdentifierChanged();
-                }
-            }
-        }
-        private global::System.Int32 _Identifier;
-        partial void OnIdentifierChanging(global::System.Int32 value);
-        partial void OnIdentifierChanged();
+    	/// <summary>
+    	/// No Metadata Documentation available.
+    	/// </summary>
+    	[EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+    	[DataMemberAttribute()]
+    	public global::System.Int32 Identifier
+    	{
+    		get
+    		{
+    			return _Identifier;
+    		}
+    		set
+    		{
+    			if (_Identifier != value)
+    			{
+        			OnIdentifierChanging(value);
+        			ReportPropertyChanging("Identifier");
+        			_Identifier = StructuralObject.SetValidValue(value);
+        			ReportPropertyChanged("Identifier");
+        			OnIdentifierChanged();
+    			}
+    		}
+    	}
+    	private global::System.Int32 _Identifier;
+    	partial void OnIdentifierChanging(global::System.Int32 value);
+    	partial void OnIdentifierChanged();
     
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String PhoneId
-        {
-            get
-            {
-                return _PhoneId;
-            }
-            set
-            {
-                OnPhoneIdChanging(value);
-                ReportPropertyChanging("PhoneId");
-                _PhoneId = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("PhoneId");
-                OnPhoneIdChanged();
-            }
-        }
-        private global::System.String _PhoneId;
-        partial void OnPhoneIdChanging(global::System.String value);
-        partial void OnPhoneIdChanged();
+    	/// <summary>
+    	/// No Metadata Documentation available.
+    	/// </summary>
+    	[EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+    	[DataMemberAttribute()]
+    	public global::System.String PhoneId
+    	{
+    		get
+    		{
+    			return _PhoneId;
+    		}
+    		set
+    		{
+    			OnPhoneIdChanging(value);
+    			ReportPropertyChanging("PhoneId");
+    			_PhoneId = StructuralObject.SetValidValue(value, true);
+    			ReportPropertyChanged("PhoneId");
+    			OnPhoneIdChanged();
+    		}
+    	}
+    	private global::System.String _PhoneId;
+    	partial void OnPhoneIdChanging(global::System.String value);
+    	partial void OnPhoneIdChanged();
     
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.Byte[] Location
-        {
-            get
-            {
-                return StructuralObject.GetValidValue(_Location);
-            }
-            set
-            {
-                OnLocationChanging(value);
-                ReportPropertyChanging("Location");
-                _Location = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Location");
-                OnLocationChanged();
-            }
-        }
-        private global::System.Byte[] _Location;
-        partial void OnLocationChanging(global::System.Byte[] value);
-        partial void OnLocationChanged();
+    	/// <summary>
+    	/// No Metadata Documentation available.
+    	/// </summary>
+    	[EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+    	[DataMemberAttribute()]
+    	public global::System.Byte[] Location
+    	{
+    		get
+    		{
+    			return StructuralObject.GetValidValue(_Location);
+    		}
+    		set
+    		{
+    			OnLocationChanging(value);
+    			ReportPropertyChanging("Location");
+    			_Location = StructuralObject.SetValidValue(value, true);
+    			ReportPropertyChanged("Location");
+    			OnLocationChanged();
+    		}
+    	}
+    	private global::System.Byte[] _Location;
+    	partial void OnLocationChanging(global::System.Byte[] value);
+    	partial void OnLocationChanged();
 
         #endregion
     
@@ -395,118 +393,118 @@ namespace Model.Persistence
     {
         #region Factory Method
     
-        /// <summary>
-        /// Create a new Location object.
-        /// </summary>
+    	/// <summary>
+    	/// Create a new Location object.
+    	/// </summary>
         /// <param name="identifier">Initial value of the Identifier property.</param>
-        public static Location CreateLocation(global::System.Int64 identifier)
-        {
-            Location location = new Location();
-            location.Identifier = identifier;
-            return location;
-        }
+    	public static Location CreateLocation(global::System.Int64 identifier)
+    	{
+    		Location location = new Location();
+    		location.Identifier = identifier;
+    		return location;
+    	}
 
         #endregion
         #region Primitive Properties
     
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int64 Identifier
-        {
-            get
-            {
-                return _Identifier;
-            }
-            set
-            {
-                if (_Identifier != value)
-                {
-                    OnIdentifierChanging(value);
-                    ReportPropertyChanging("Identifier");
-                    _Identifier = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("Identifier");
-                    OnIdentifierChanged();
-                }
-            }
-        }
-        private global::System.Int64 _Identifier;
-        partial void OnIdentifierChanging(global::System.Int64 value);
-        partial void OnIdentifierChanged();
+    	/// <summary>
+    	/// No Metadata Documentation available.
+    	/// </summary>
+    	[EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+    	[DataMemberAttribute()]
+    	public global::System.Int64 Identifier
+    	{
+    		get
+    		{
+    			return _Identifier;
+    		}
+    		set
+    		{
+    			if (_Identifier != value)
+    			{
+        			OnIdentifierChanging(value);
+        			ReportPropertyChanging("Identifier");
+        			_Identifier = StructuralObject.SetValidValue(value);
+        			ReportPropertyChanged("Identifier");
+        			OnIdentifierChanged();
+    			}
+    		}
+    	}
+    	private global::System.Int64 _Identifier;
+    	partial void OnIdentifierChanging(global::System.Int64 value);
+    	partial void OnIdentifierChanged();
     
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String PhoneId
-        {
-            get
-            {
-                return _PhoneId;
-            }
-            set
-            {
-                OnPhoneIdChanging(value);
-                ReportPropertyChanging("PhoneId");
-                _PhoneId = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("PhoneId");
-                OnPhoneIdChanged();
-            }
-        }
-        private global::System.String _PhoneId;
-        partial void OnPhoneIdChanging(global::System.String value);
-        partial void OnPhoneIdChanged();
+    	/// <summary>
+    	/// No Metadata Documentation available.
+    	/// </summary>
+    	[EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+    	[DataMemberAttribute()]
+    	public global::System.String PhoneId
+    	{
+    		get
+    		{
+    			return _PhoneId;
+    		}
+    		set
+    		{
+    			OnPhoneIdChanging(value);
+    			ReportPropertyChanging("PhoneId");
+    			_PhoneId = StructuralObject.SetValidValue(value, true);
+    			ReportPropertyChanged("PhoneId");
+    			OnPhoneIdChanged();
+    		}
+    	}
+    	private global::System.String _PhoneId;
+    	partial void OnPhoneIdChanging(global::System.String value);
+    	partial void OnPhoneIdChanged();
     
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String LocationText
-        {
-            get
-            {
-                return _LocationText;
-            }
-            set
-            {
-                OnLocationTextChanging(value);
-                ReportPropertyChanging("LocationText");
-                _LocationText = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("LocationText");
-                OnLocationTextChanged();
-            }
-        }
-        private global::System.String _LocationText;
-        partial void OnLocationTextChanging(global::System.String value);
-        partial void OnLocationTextChanged();
+    	/// <summary>
+    	/// No Metadata Documentation available.
+    	/// </summary>
+    	[EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+    	[DataMemberAttribute()]
+    	public global::System.String LocationText
+    	{
+    		get
+    		{
+    			return _LocationText;
+    		}
+    		set
+    		{
+    			OnLocationTextChanging(value);
+    			ReportPropertyChanging("LocationText");
+    			_LocationText = StructuralObject.SetValidValue(value, true);
+    			ReportPropertyChanged("LocationText");
+    			OnLocationTextChanged();
+    		}
+    	}
+    	private global::System.String _LocationText;
+    	partial void OnLocationTextChanging(global::System.String value);
+    	partial void OnLocationTextChanged();
     
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> Timestamp
-        {
-            get
-            {
-                return _Timestamp;
-            }
-            set
-            {
-                OnTimestampChanging(value);
-                ReportPropertyChanging("Timestamp");
-                _Timestamp = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Timestamp");
-                OnTimestampChanged();
-            }
-        }
-        private Nullable<global::System.DateTime> _Timestamp;
-        partial void OnTimestampChanging(Nullable<global::System.DateTime> value);
-        partial void OnTimestampChanged();
+    	/// <summary>
+    	/// No Metadata Documentation available.
+    	/// </summary>
+    	[EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+    	[DataMemberAttribute()]
+    	public Nullable<global::System.DateTime> Timestamp
+    	{
+    		get
+    		{
+    			return _Timestamp;
+    		}
+    		set
+    		{
+    			OnTimestampChanging(value);
+    			ReportPropertyChanging("Timestamp");
+    			_Timestamp = StructuralObject.SetValidValue(value);
+    			ReportPropertyChanged("Timestamp");
+    			OnTimestampChanged();
+    		}
+    	}
+    	private Nullable<global::System.DateTime> _Timestamp;
+    	partial void OnTimestampChanging(Nullable<global::System.DateTime> value);
+    	partial void OnTimestampChanged();
 
         #endregion
     
@@ -525,29 +523,29 @@ namespace Model.Persistence
     {
         #region Primitive Properties
     
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int64> identifier
-        {
-            get
-            {
-                return _identifier;
-            }
-            set
-            {
-                OnidentifierChanging(value);
-                ReportPropertyChanging("identifier");
-                _identifier = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("identifier");
-                OnidentifierChanged();
-            }
-        }
-        private Nullable<global::System.Int64> _identifier;
-        partial void OnidentifierChanging(Nullable<global::System.Int64> value);
-        partial void OnidentifierChanged();
+    	/// <summary>
+    	/// No Metadata Documentation available.
+    	/// </summary>
+    	[EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+    	[DataMemberAttribute()]
+    	public Nullable<global::System.Int64> identifier
+    	{
+    		get
+    		{
+    			return _identifier;
+    		}
+    		set
+    		{
+    			OnidentifierChanging(value);
+    			ReportPropertyChanging("identifier");
+    			_identifier = StructuralObject.SetValidValue(value);
+    			ReportPropertyChanged("identifier");
+    			OnidentifierChanged();
+    		}
+    	}
+    	private Nullable<global::System.Int64> _identifier;
+    	partial void OnidentifierChanging(Nullable<global::System.Int64> value);
+    	partial void OnidentifierChanged();
 
         #endregion
     }

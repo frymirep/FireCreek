@@ -9,7 +9,7 @@ namespace Repositories
     public class Repository<T> where T : IdentifiableEntity
     {
         // refactor to seperate FuncMaps class?
-        private static readonly Dictionary<Type, Func<string, IdentifiableEntity, IdentifiableEntity>> CreateTypeMap = 
+        private static readonly Dictionary<Type, Func<string, IdentifiableEntity, IdentifiableEntity>> CreateTypeMap =
             new Dictionary<Type, Func<string, IdentifiableEntity, IdentifiableEntity>>
         {
             { typeof(Advertisement), (id, p) => { return AdvertisementRepository.Create(p as Advertisement); }},
@@ -20,7 +20,7 @@ namespace Repositories
         {
             { typeof(Advertisement), p => { return AdvertisementRepository.Update(p as Advertisement); } }
         };
-        
+
 
         private static readonly StringToEntityFuncMap RetrieveTypeMap = new StringToEntityFuncMap
         {
@@ -55,10 +55,10 @@ namespace Repositories
         }
 
         // TODO:  These static methods are so similar... some way to refactor to common code even though type maps are different types?
-        public static T Create(T payload) 
+        public static T Create(T payload)
         {
             var typeMap = CreateTypeMap;
-            var type =  typeof(T);
+            var type = typeof(T);
             if (!typeMap.ContainsKey(type)) return null;
             var result = typeMap[type](payload.Identifier, payload);
             return result as T;

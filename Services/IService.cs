@@ -9,7 +9,6 @@ namespace Services
     public interface IService<T> where T : IdentifiableEntity
     {
         [OperationContract]
-      //  T Create(string id, T payload);
         T Create(T payload);
 
         [OperationContract]

@@ -35,23 +35,20 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Advertisement.cs" />
     <Compile Include="Domain\GeoLocation.cs" />
     <Compile Include="Domain\IdentifiableEntity.cs" />
+    <Compile Include="Domain\Phone.cs" />
     <Compile Include="Persistence\Persistence.Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Persistence.Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RouteNameAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Persistence\PersistenceModel.edmx" />

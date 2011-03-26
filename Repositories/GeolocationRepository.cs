@@ -23,20 +23,20 @@ namespace Repositories
             return geoLocation;
         }
 
-        private static List<Location> LocationsByNaturalKey(GeoLocation geoLocation)
+        private static IEnumerable<Location> LocationsByNaturalKey(GeoLocation geoLocation)
         {
             using (var repo = new PersistenceEntities())
             {
-               return repo.Locations
-                    .Where(l => l.PhoneId == geoLocation.PhoneId && l.Timestamp == geoLocation.Timestamp)
-                    .ToList();
+                return repo.Locations
+                     .Where(l => l.PhoneId == geoLocation.PhoneId && l.Timestamp == geoLocation.Timestamp)
+                     .ToList();
             }
         }
 
         public static GeoLocation Update(GeoLocation geoLocation)
         {
             return geoLocation;
-           // for now, locations are write once
+            // for now, locations are write once
         }
 
         private static Location GetLocationById(long identifier)
@@ -52,19 +52,16 @@ namespace Repositories
         }
         public static GeoLocation GetGeoLocationById(long identifier)
         {
-            using (var repo = new PersistenceEntities())
+            var locationOfId = GetLocationById(identifier);
+            var x = SqlGeometry.Parse(locationOfId.LocationText);
+            var location = new GeoLocation
             {
-                var locationOfId = GetLocationById(identifier);
-                var x = SqlGeometry.Parse(locationOfId.LocationText);
-                var location = new GeoLocation
-                {
-                    Identifier = locationOfId.Identifier.ToString(),
-                    Longitude = x.STX.Value,
-                    Latitude = x.STY.Value,
-                    Timestamp = locationOfId.Timestamp.Value
-                };
-                return locationOfId == null ? GeoLocation.Null : location;
-            }           
+                Identifier = locationOfId.Identifier.ToString(),
+                Longitude = x.STX.Value,
+                Latitude = x.STY.Value,
+                Timestamp = locationOfId.Timestamp.Value
+            };
+            return locationOfId == null ? GeoLocation.Null : location;
         }
 
         public static void RemoveById(int identifier)

@@ -3,6 +3,7 @@
 namespace Model.Domain
 {
     [DataContract(Namespace = "")]
+    [RouteName(Name = "Advert")]
     public class Advertisement : IdentifiableEntity
     {
         [DataMember]

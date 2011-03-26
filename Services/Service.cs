@@ -9,7 +9,7 @@ namespace Services
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class Service<T> : IService<T> where T : IdentifiableEntity
     {
-        #region IAdvertisementService Members
+        #region IService<T> Members
 
         [WebInvoke(Method = "POST")]
         public T Create(T payload)
@@ -65,6 +65,5 @@ namespace Services
             }
         }
     }
-
 
 }
