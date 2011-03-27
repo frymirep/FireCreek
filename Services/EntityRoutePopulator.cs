@@ -7,21 +7,25 @@ using Model.Domain;
 
 namespace Services
 {
-    public class EntityRouteCollection : RouteCollection
+    // I don't like the current semantics of this class.  It is the collection of routes that
+    public class EntityRouteCollection 
     {
+        public RouteCollection Routes { get; private set; }
         public EntityRouteCollection()
         {
-            AddRoutesForEntities();
+            Routes  = RoutesForEntities();
         }
 
-        private void AddRoutesForEntities()
+        private static RouteCollection RoutesForEntities()
         {
+            var result = new RouteCollection();
             var type = typeof(IdentifiableEntity);
             var entities = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
                 .Where(type.IsAssignableFrom)
                 .ToList();
-            entities.ForEach(e => Add(RouteOfType(e)));
+            entities.ForEach(e => result.Add(RouteOfType(e)));
+            return result;
         }
 
         private static ServiceRoute RouteOfType(Type typeToRoute)
@@ -41,7 +45,6 @@ namespace Services
                 .Where(a => a is RouteNameAttribute)
                 .Cast<RouteNameAttribute>()
                 .FirstOrDefault();
-
             return (routeNameAttribute != default(RouteNameAttribute)) ? routeNameAttribute.Name : typeToRoute.Name;
         }
     }

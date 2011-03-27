@@ -29,17 +29,17 @@ namespace Repositories
         };
 
         private static readonly StringToEntityFuncMap DeleteTypeMap = new StringToEntityFuncMap
-                              {
-                                  {
-                                      typeof(Advertisement), id =>
-                                                                 {
-                                                                     int identifier;
-                                                                     if (!int.TryParse(id, out identifier)) return null; 
-                                                                     AdvertisementRepository.RemoveById(identifier);
-                                                                     return null;
-                                                                 }
-                                  }
-                              };
+        {
+            {
+                typeof(Advertisement), id =>
+                                            {
+                                                int identifier;
+                                                if (!int.TryParse(id, out identifier)) return null; 
+                                                AdvertisementRepository.RemoveById(identifier);
+                                                return null;
+                                            }
+            }
+        };
 
         // this needs a better name very badly
         private static int BoxIdAsInt(string id)

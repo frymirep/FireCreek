@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.ServiceModel.Activation;
 using System.Web;
 using System.Web.Routing;
-using Model;
-using Model.Domain;
 using Services;
 
 namespace ServicesSite
 {
     public class Global : HttpApplication
     {
-        protected void Application_Start(object sender, EventArgs e)
-        {
-            var routeCollection = new EntityRouteCollection();
-            foreach (var route in routeCollection)
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {  // make sure we have the latest routes added
+            // is it overkill to do this for every request?
+            // is there some other way to support runtime / dynamic route addition via dll swapout?Application_BeginRequest
+            var allRoutes =new EntityRouteCollection().Routes;
+            foreach (var route in allRoutes.Where(route => !RouteTable.Routes.Contains(route)))
             {
                 RouteTable.Routes.Add(route);
             }
