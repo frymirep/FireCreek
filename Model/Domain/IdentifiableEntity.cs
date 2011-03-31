@@ -10,6 +10,11 @@ namespace Model.Domain
         public string Identifier { get; set; }
 
         public static IdentifiableEntity Null
-        { get { return new IdentifiableEntity(); } }
+        { 
+            get
+            {
+                return new IdentifiableEntity();
+            } 
+        }
     }
 }
