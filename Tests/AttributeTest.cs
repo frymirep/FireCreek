@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Model;
 using Model.Domain;
@@ -18,7 +17,7 @@ namespace Tests
                 .Where(a => a is RouteNameAttribute)
                 .Cast<RouteNameAttribute>()
                 .FirstOrDefault();
-            Console.WriteLine(routeNameAttribute.Name);
+            Assert.AreEqual(routeNameAttribute.Name,"Advert");
         }
     }
 }
