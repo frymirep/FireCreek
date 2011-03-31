@@ -43,10 +43,14 @@
   <ItemGroup>
     <Compile Include="AdvertisementRepository.cs" />
     <Compile Include="ContextExtensions.cs" />
+    <Compile Include="EntitiyToEntityFuncMap.cs" />
     <Compile Include="GeolocationRepository.cs" />
+    <Compile Include="IRepositoryTypeMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="RepositoryExtensions.cs" />
+    <Compile Include="RepositoryTypeMapper.cs" />
+    <Compile Include="StringToEntityFuncMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">

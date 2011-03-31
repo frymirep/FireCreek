@@ -9,13 +9,24 @@ namespace Services
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class Service<T> : IService<T> where T : IdentifiableEntity
     {
+        private readonly IRepositoryTypeMap _typeMap;
+
+        private readonly Repository<T> _repository;
+        public Service(IRepositoryTypeMap typeMap)
+        {
+            _typeMap = typeMap;
+            _repository = new Repository<T>(_typeMap);
+        }
+
+        public Service() : this(new RepositoryTypeMapper()) {}
+
         #region IService<T> Members
 
         [WebInvoke(Method = "POST")]
         public T Create(T payload)
         {
             if (payload == null) return null;
-            Func<T> action = () => Repository<T>.Create(payload);
+            Func<T> action = () => _repository.Create(payload);
             var result = PerformAction(action);
             return result;
         }
@@ -24,7 +35,7 @@ namespace Services
         public T Read(string id)
         {
             if (string.IsNullOrEmpty(id)) return null;
-            Func<T> action = () => Repository<T>.GetById(id);
+            Func<T> action = () => _repository.GetById(id);
             var result = PerformAction(action);
             return result;
         }
@@ -33,7 +44,7 @@ namespace Services
         public T Update(T payload)
         {
             if (payload == null) return null;
-            Func<T> action = () => Repository<T>.Update(payload);
+            Func<T> action = () => _repository.Update(payload);
             var result = PerformAction(action);
             return result;
         }
@@ -44,7 +55,7 @@ namespace Services
             if (string.IsNullOrEmpty(id)) return;
             Func<T> action = () =>
             {
-                Repository<T>.RemoveById(id);
+                _repository.RemoveById(id);
                 return null;
             };
 

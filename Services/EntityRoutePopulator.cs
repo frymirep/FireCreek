@@ -7,8 +7,7 @@ using Model.Domain;
 
 namespace Services
 {
-    // I don't like the current semantics of this class.  It is the collection of routes that
-    public class EntityRouteRegistration
+    public class EntityRouteRegistrar
     {
         public RouteCollection Routes { get; set; }
 

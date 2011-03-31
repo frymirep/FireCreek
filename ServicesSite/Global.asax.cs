@@ -9,7 +9,7 @@ namespace ServicesSite
     {
         protected void Application_Start(object sender, EventArgs e)
         {  
-            var entityRoutePopulator = new EntityRouteRegistration { Routes = RouteTable.Routes };
+            var entityRoutePopulator = new EntityRouteRegistrar { Routes = RouteTable.Routes };
             entityRoutePopulator.RegisterRoutes();
         }
     }
