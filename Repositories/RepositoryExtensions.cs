@@ -1,4 +1,4 @@
-﻿namespace Repository
+﻿namespace Repositories
 {
     public static class RepositoryExtensions
     {

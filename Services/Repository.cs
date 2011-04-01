@@ -2,7 +2,7 @@
 
 namespace Repositories
 {
-    public class Repository<T> where T : IdentifiableEntity
+    public class Repository<T> where T : class, IRESTable
     {
         private readonly IRepositoryTypeMap _typeMap;
         public Repository(IRepositoryTypeMap typeMap)

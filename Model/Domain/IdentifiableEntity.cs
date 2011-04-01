@@ -1,20 +1,16 @@
 ﻿using System.Runtime.Serialization;
-
 namespace Model.Domain
 {
     [DataContract(Namespace = "")]
-    public class IdentifiableEntity
+    public class IdentifiableEntity : IRESTable
     {
         // in practice I expect this field will be the ESN if data is coming from the client, and some kind of object id if coming from the server
         [DataMember]
         public string Identifier { get; set; }
 
         public static IdentifiableEntity Null
-        { 
-            get
-            {
-                return new IdentifiableEntity();
-            } 
+        {
+            get { return new IdentifiableEntity(); }
         }
     }
 }

@@ -13,6 +13,7 @@
     <RootNamespace>ServiceSite</RootNamespace>
     <AssemblyName>ServiceSite</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -59,10 +60,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{D1BB40E0-A57B-4471-A21F-A3792C1B6647}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Repositories\Repositories.csproj">
       <Project>{840A1372-3482-469B-8326-EDD15BA85F64}</Project>
       <Name>Repositories</Name>

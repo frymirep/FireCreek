@@ -6,7 +6,7 @@ using Model.Domain;
 namespace Services
 {
     [ServiceContract]
-    public interface IService<T> where T : IdentifiableEntity
+    public interface IService<T> where T : IRESTable
     {
         [OperationContract]
         T Create(T payload);

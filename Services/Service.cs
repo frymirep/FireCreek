@@ -7,18 +7,16 @@ using Repositories;
 namespace Services
 {
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
-    public class Service<T> : IService<T> where T : IdentifiableEntity
+    public class Service<T> : IService<T> where T : class, IRESTable
     {
-        private readonly IRepositoryTypeMap _typeMap;
+        public static IRepositoryTypeMap RepositoryTypeMap { private get; set; }
 
         private readonly Repository<T> _repository;
-        public Service(IRepositoryTypeMap typeMap)
-        {
-            _typeMap = typeMap;
-            _repository = new Repository<T>(_typeMap);
-        }
 
-        public Service() : this(new RepositoryTypeMapper()) {}
+        public Service()
+        {
+            _repository = new Repository<T>(RepositoryTypeMap);
+        }
 
         #region IService<T> Members
 
